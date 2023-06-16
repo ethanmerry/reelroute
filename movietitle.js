@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-  fetch('startingMovie.json')
+  fetch('files/startingMovie.json')
     .then(response => response.json())
     .then(startingMovieData => {
       const startingFilmName = startingMovieData.title;
-      return fetch('endMovie.json')
+      return fetch('files/endMovie.json')
         .then(response => response.json())
         .then(endMovieData => {
           const endingFilmName = endMovieData.title;
