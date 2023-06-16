@@ -1,0 +1,231 @@
+.welcome {
+    background: #ee0979;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #ff6a00, #ee0979);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #ff6a00, #ee0979); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 915px;
+}
+
+.bolt {
+    position: absolute;
+    width: 23px;
+    height: 60px;
+    left: calc(50% - 23px/2 - 0.5px);
+    bottom: 5%;
+}
+
+.reelselections {
+    background: #121212; 
+    position: absolute;
+    left: 0%;
+    top: 915px;
+    width: 100%;
+    height: 796px;
+}
+
+.gamemodes {
+    background: #000000; 
+    position: absolute;
+    left: 0%;
+    top: 1711px;
+    width: 100%;
+    height: 856px;
+}
+
+.logo {
+    position: absolute;
+    width: 307px;
+    height: 75px;
+    left: calc(50% - 307px/2 - 0.5px);
+    top: 131px;
+}
+
+.slogan {
+    position: absolute;
+    width: 551px;
+    height: 29px;
+    left: calc(50% - 551px/2 - 0.5px);
+    top: 241px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29px;
+    /* identical to box height */
+    
+    display: flex;
+    align-items: center;
+    text-align: center;
+    
+    color: #FFFFFF;
+}
+.statistics {
+    position: absolute;
+    width: 55px;
+    height: 41px;
+    left: 18px;
+    top: 16px;
+}
+
+.howto {
+    position: absolute;
+    width: 41px;
+    height: 41px;
+    left: 87px;
+    top: 16px;
+}
+
+.title {
+    position: absolute;
+    left: 50px;
+    font-family: 'Futura XBlkCnIt BT';
+    font-style: italic;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 43px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    
+    color: #FFFFFF;
+}
+
+.frame {
+    position: absolute;
+    width: 100%;
+    height: 615px;
+    top: 100px;
+    overflow-x: scroll;
+}
+
+.box {
+    width: 476px; 
+    height: 600px;
+    left: 75px;
+    top: 0px;
+    float: left;
+    
+    background: rgba(217, 217, 217, 0.12);
+    backdrop-filter: blur(50px);    
+    border-radius: 26px;
+}
+
+.titlebox {
+    left: 0px;
+    top: 0px;
+    
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0px 4px 52px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(25px);
+    /* Note: backdrop-filter has minimal browser support */
+    
+    border-radius: 26px;
+}
+
+h3 {
+    height: 74px;
+    top: 0px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    
+    color: #FFFFFF;
+
+}
+
+.container {
+    position: absolute;
+    width: 659px;
+    height: 381px;
+    left: calc(50% - 659px/2 - 16.5px);
+    top: 400px;
+    
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0px 4px 52px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(25px);
+    /* Note: backdrop-filter has minimal browser support */
+    
+    border-radius: 18px 18px 26px 26px;
+}
+.todayroutecontainer {
+    position: absolute;
+    width: 659px;
+    height: 37px;
+    left: 0px;
+    top: 0px;
+
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0px 4px 52px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(25px);
+
+    border-radius: 26px;
+}
+
+.playbox {
+    position: absolute;
+    width: 659px;
+    height: 94px;
+    left: 0px;
+    bottom: 0px;
+    
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0px 4px 52px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(25px);
+    /* Note: backdrop-filter has minimal browser support */
+    
+    border-radius: 26px;
+}
+
+.fronttext {
+    position: absolute;
+    top: -9px;
+    left: 250px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    
+    color: #FFFFFF;
+}
+
+.playtext {
+    position: absolute;
+    height: 94px;
+    top: -30px;
+    left: 255px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 55px;
+    line-height: 67px;
+    
+    color: #FFFFFF;
+}
+
+#starting {
+    position: absolute;
+    width: 144px;
+    left: 100px;
+}
+
+#ending {
+    position: absolute;
+    width: 144px;
+    left: 100px;
+}
