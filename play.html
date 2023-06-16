@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="pageTitle"> ReelRoute</title>
     <script src="movietitle.js"></script>
+    <script>
+        sessionStorage.setItem('links', 120);
+        var nowdate = new Date()
+        sessionStorage.setItem('startTime', nowdate);
+        sessionStorage.setItem('id', 13);
+        sessionStorage.setItem('type', "movie");
+    </script>
     <link rel="icon" type="image/x-icon" href="images/favicon.svg">
     <link rel="stylesheet" href="play.css">
 </head>
@@ -30,11 +37,44 @@
             </div>
             <div class="boxbg">
                 <h2 class="subtitle">LINKS</h2>
-                <h3 class="info">0</h3>
+                <h3 id="linksnum" class="info">0</h3>
+                <script>
+                    var links = sessionStorage.getItem('links');
+                    document.getElementById('linksnum').textContent = links;
+                </script>            
             </div>
             <div class="boxbg">
                 <h2 class="subtitle">TIME</h2>
-                <h3 class="info">00:00</h3>
+                <h3 id="time" class="info">00:00</h3>
+                <script>
+                    // Get the element to display the timer
+                    const timerElement = document.getElementById('time');
+
+                    // Set the start time
+                    let startTime = new Date().getTime();
+
+                    // Update the timer every second
+                    setInterval(updateTimer, 1000);
+
+                    function updateTimer() {
+                        // Get the current time
+                        let currentTime = new Date().getTime();
+
+                        // Calculate the elapsed time in milliseconds
+                        let elapsedTime = currentTime - startTime;
+
+                        // Calculate minutes and seconds
+                        let minutes = Math.floor(elapsedTime / 60000);
+                        let seconds = Math.floor((elapsedTime % 60000) / 1000);
+
+                        // Format the minutes and seconds as "00" if they are single-digit
+                        let formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+                        let formattedSeconds = seconds < 10 ? '0' + seconds : seconds;
+
+                        // Update the timer element with the formatted time
+                        timerElement.textContent = formattedMinutes + ':' + formattedSeconds;
+                    }
+                </script>            
             </div>
         </div>
    </div>
