@@ -142,12 +142,5 @@
     left: 0px;
     top: 150px;
     width: 100%;
-}
-
-.crew {
-    position: absolute;
-    left: 0px;
-    top: 300px;
-    width: 100%;
-
+    height: calc(100% - 150px)
 }
