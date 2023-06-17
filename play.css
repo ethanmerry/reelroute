@@ -135,5 +135,6 @@
 
 .image {
     border-radius: 18px 18px 18px 18px;
-    height: 150px;
+    min-height: 150px;
+    max-height: 270px;
 }
