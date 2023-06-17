@@ -13,6 +13,7 @@
             .then(response => response.json())
             .then(data => {
                 const idValue = data.id;
+                console.log(idValue)
             })
             .catch(error => {
                 console.log('Error:', error);
