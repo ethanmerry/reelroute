@@ -9,6 +9,19 @@
         sessionStorage.setItem('links', 0);
         var nowdate = new Date()
         sessionStorage.setItem('startTime', nowdate);
+        const fs = require('fs');
+
+        fs.readFile('startingMovie.json', 'utf8', (err, jsonString) => {
+        if (err) {
+            console.log('Error reading file:', err);
+            return;
+        }
+
+        const data = JSON.parse(jsonString);
+
+        // Access the data from the JSON file
+        const id = data.id;
+        });
         sessionStorage.setItem('id', 13);
         sessionStorage.setItem('type', "movie");
     </script>
