@@ -101,7 +101,8 @@
                         if (cast.profile_path) {
                             const image = `https://image.tmdb.org/t/p/w200${cast.profile_path}`;
                             const name = cast.name;
-                            createImageWithText(containerElement, image, name, id);
+                            const entityid = cast.id;
+                            createImageWithText(containerElement, image, name, entityid);
                         }
                         });
                     } else if (type === 'cast') {
@@ -112,7 +113,8 @@
                         if (credit.media_type === 'movie' && credit.poster_path) {
                             const image = `https://image.tmdb.org/t/p/w200${credit.poster_path}`;
                             const name = credit.title;
-                            createImageWithText(containerElement, image, name, id);
+                            const entityid = credit.id;
+                            createImageWithText(containerElement, image, name, entityid);
                         }
                         });
                     } else {
