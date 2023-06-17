@@ -79,7 +79,10 @@
                     const imageElement = document.createElement('img');
                     imageElement.src = imageUrl;
                     imageElement.className = 'image';
-                    imageElement.draggable = 'false'
+                    imageElement.draggable = false
+                    imageElement.addEventListener('contextmenu', (e) => {
+                      e.preventDefault();
+                    });
                     wrapperElement.appendChild(imageElement);
                     imageElement.addEventListener('click', () => {
                         sessionStorage.setItem('id',entityid);
