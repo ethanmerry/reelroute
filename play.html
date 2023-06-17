@@ -80,6 +80,9 @@
                     imageElement.src = imageUrl;
                     imageElement.className = 'image';
                     wrapperElement.appendChild(imageElement);
+                    imageElement.addEventListener('click', () => {
+                      console.log(`Clicked movie ID: ${id}`);
+                    });
 
                     const textElement = document.createElement('p');
                     textElement.textContent = text;
