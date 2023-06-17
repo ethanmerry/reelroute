@@ -186,15 +186,9 @@
                     const apiKey = '3359eee818730a0f011a07b7e6e73375';
                                         
                     // Make the HTTP request to the TMDB API
-                    const options = {
-                      method: 'GET',
-                      headers: {
-                        accept: 'application/json',
-                        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMzU5ZWVlODE4NzMwYTBmMDExYTA3YjdlNmU3MzM3NSIsInN1YiI6IjY0ODc1OTIxYzAzNDhiMDBhZWQ1Nzc3YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qtny7zLA5JZuo2moI3UYBzi4grqAjwK5NMCyn85zO3U'
-                      }
-                    };
+                    const url = `https://api.themoviedb.org/3/movie/${movieID}?api_key=${apiKey}`;
                     
-                    fetch('https://api.themoviedb.org/3/movie/${movieID}/images?language=en', options)
+                    fetch(url)
                       .then(response => response.json())
                       .then(data => {
 
