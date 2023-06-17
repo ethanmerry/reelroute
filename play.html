@@ -9,21 +9,16 @@
         sessionStorage.setItem('links', 0);
         var nowdate = new Date()
         sessionStorage.setItem('startTime', nowdate);
-        const fs = require('fs');
+        fetch('startingMovie.json')
+            .then(response => response.json())
+            .then(data => {
+                const idValue = data.id;
+            })
+            .catch(error => {
+                console.log('Error:', error);
+            });
 
-        fs.readFile('files/startingMovie.json', 'utf8', (err, jsonString) => {
-        if (err) {
-            console.log('Error reading file:', err);
-            return;
-        }
-
-        const data = JSON.parse(jsonString);
-
-        // Access the data from the JSON file
-        const id = data.id;
-        console.log(id);
-        });
-        sessionStorage.setItem('id', id);
+        sessionStorage.setItem('id', idValue);
         sessionStorage.setItem('type', "movie");
     </script>
     <link rel="icon" type="image/x-icon" href="images/favicon.svg">
