@@ -20,6 +20,15 @@
             });
 
         sessionStorage.setItem('type', "movie");
+        fetch('files/endMovie.json')
+            .then(response => response.json())
+            .then(data => {
+                const idValue = data.id;
+                sessionStorage.setItem('endID', idValue);
+            })
+            .catch(error => {
+                console.log('Error:', error);
+            });
     </script>
     <link rel="icon" type="image/x-icon" href="images/favicon.svg">
     <link rel="stylesheet" href="play.css">
@@ -115,13 +124,60 @@
     </div>
     <div class="sidebar">
         <img draggable="false" class="logo" src="images/ReelRoute White.svg">
-        <img draggable="false" id="poster" src="" alt="film poster">
-        <!--<script src="script.js"></script>-->
+        <img draggable="false" id="poster" class="poster" src="" alt="film poster">
+        <script>
+            const id = sessionStorage.getItem('id');
+            const type = sessionStorage.getItem('type')
+            
+            function getPosterOrHeadshot(type, id) {
+              const apiKey = "3359eee818730a0f011a07b7e6e73375"; // Replace with your TMDb API key
+              const baseUrl = "https://api.themoviedb.org/3";
+            
+              if (type === "movie") {
+                // Get movie details
+                const movieUrl = `${baseUrl}/movie/${id}?api_key=${apiKey}`;
+                return fetch(movieUrl)
+                  .then(response => response.json())
+                  .then(movieData => {
+                    const posterPath = movieData.poster_path;
+                    if (posterPath) {
+                      const posterUrl = `https://image.tmdb.org/t/p/w500/${posterPath}`;
+                      return posterUrl;
+                    }
+                    return null;
+                  });
+              } else if (type === "cast") {
+                // Get cast details
+                const castUrl = `${baseUrl}/person/${id}?api_key=${apiKey}`;
+                return fetch(castUrl)
+                  .then(response => response.json())
+                  .then(castData => {
+                    const profilePath = castData.profile_path;
+                    if (profilePath) {
+                      const posterUrl = `https://image.tmdb.org/t/p/w500/${profilePath}`;
+                      return posterUrl;
+                    }
+                    return null;
+                  });
+              }
+            
+              return Promise.resolve(null);
+            }
+            
+            getPosterOrHeadshot(type, id)
+              .then(posterUrl => {
+                const posterElement = document.getElementById("poster");
+                if (posterUrl) {
+                  posterElement.src = posterUrl;
+                } else {
+                  posterElement.alt = "Film poster not found.";
+                }
+              });
+        </script>
         <div class="linktime">
             <div class="boxbg">
                 <h2 class="subtitle">TO</h2>
                 <img draggable="false" id="tologo" class="tologo" src="">
-                <h2 class="subtitle">2015</h2>
             </div>
             <div class="boxbg">
                 <h2 class="subtitle">LINKS</h2>
