@@ -11,7 +11,7 @@
         sessionStorage.setItem('startTime', nowdate);
         const fs = require('fs');
 
-        fs.readFile('startingMovie.json', 'utf8', (err, jsonString) => {
+        fs.readFile('files/startingMovie.json', 'utf8', (err, jsonString) => {
         if (err) {
             console.log('Error reading file:', err);
             return;
