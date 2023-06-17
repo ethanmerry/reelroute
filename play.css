@@ -138,9 +138,27 @@
 }
 
 .cast {
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     position: absolute;
     left: 0px;
-    top: 150px;
-    width: 100%;
-    height: calc(100% - 150px)
+    top: 200px;
+    max-width: 100%;
+}
+
+.item {
+    flex: 0 0 0;
+    margin: 10px;
+    text-align: center;
+  }
+
+.caption {
+    font-family: 'Inter';
+    color: #FFFFFF;
+}
+
+.image {
+    border-radius: 18px 18px 18px 18px;
 }
