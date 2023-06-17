@@ -94,9 +94,9 @@
                         window.updatelinks();
                         window.updateposter();
                         
-                        while (wrapperElement.firstChild) {
-                            wrapperElement.firstChild.remove();
-                          }                        
+                        while (wrapperElement.hasChildNodes()) {
+                          wrapperElement.removeChild(wrapperElement.firstChild);
+                        }                     
                         updatecredits()
 
                     });
