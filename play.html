@@ -128,13 +128,11 @@
                         const personCredits = await fetchPersonDetails(id, creditType);
                         const containerElement = document.getElementById('container');
                         personCredits.forEach((credit) => {
-                        if (credit.media_type === 'movie' && credit.poster_path && credit.runtime > 60) {
-                            if (credit.status === 'Released') {
+                        if (credit.media_type === 'movie' && credit.poster_path) {
                                 const image = `https://image.tmdb.org/t/p/w200${credit.poster_path}`;
                                 const name = credit.title;
                                 const entityid = credit.id;
                                 createImageWithText(containerElement, image, name, entityid);
-                            }
                         }
                         });
                     } else {
