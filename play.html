@@ -9,7 +9,7 @@
         sessionStorage.setItem('links', 0);
         var nowdate = new Date()
         sessionStorage.setItem('startTime', nowdate);
-        fetch('startingMovie.json')
+        fetch('files/startingMovie.json')
             .then(response => response.json())
             .then(data => {
                 const idValue = data.id;
