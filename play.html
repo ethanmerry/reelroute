@@ -72,7 +72,7 @@
                 const id = sessionStorage.getItem('id');
 
                 // Function to create and append an image and text element to a parent element
-                function createImageWithText(parentElement, imageUrl, text) {
+                function createImageWithText(parentElement, imageUrl, text, entityid) {
                     const wrapperElement = document.createElement('div');
                     wrapperElement.className = 'item';
 
@@ -81,7 +81,7 @@
                     imageElement.className = 'image';
                     wrapperElement.appendChild(imageElement);
                     imageElement.addEventListener('click', () => {
-                      console.log(`Clicked movie ID: ${id}`);
+                      console.log(`Clicked movie ID: ${entityid}`);
                     });
 
                     const textElement = document.createElement('p');
@@ -101,7 +101,7 @@
                         if (cast.profile_path) {
                             const image = `https://image.tmdb.org/t/p/w200${cast.profile_path}`;
                             const name = cast.name;
-                            createImageWithText(containerElement, image, name);
+                            createImageWithText(containerElement, image, name, id);
                         }
                         });
                     } else if (type === 'cast') {
@@ -112,7 +112,7 @@
                         if (credit.media_type === 'movie' && credit.poster_path) {
                             const image = `https://image.tmdb.org/t/p/w200${credit.poster_path}`;
                             const name = credit.title;
-                            createImageWithText(containerElement, image, name);
+                            createImageWithText(containerElement, image, name, id);
                         }
                         });
                     } else {
@@ -203,12 +203,10 @@
                     fetch('https://api.themoviedb.org/3/movie/76600/images?language=en', options)
                       .then(response => response.json())
                       .then(response => {
-                        console.log(response);
                         const logoPath = response.logos[0].file_path;
 
                         // Construct the full URL for the movie logo
                         const logoURL = `https://image.tmdb.org/t/p/original${logoPath}`;
-                        console.log(logoURL);
                     
                         // Use the logoURL as needed (e.g., display it in an <img> element)
                         const logoElement = document.getElementById("tologo");
