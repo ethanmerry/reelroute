@@ -6,7 +6,7 @@
     <title id="pageTitle"> ReelRoute</title>
     <script src="movietitle.js"></script>
     <script>
-        sessionStorage.setItem('links', 120);
+        sessionStorage.setItem('links', 0);
         var nowdate = new Date()
         sessionStorage.setItem('startTime', nowdate);
         sessionStorage.setItem('id', 13);
@@ -21,8 +21,91 @@
         <div class="gradmoviebg"></div>
         <a href="howtoplay.html" target=”_blank” attribute> <img draggable="false" class="howto" src="images/icons/How to Play.svg"> </a>
         <img draggable="false" class="movielogo" src="movielogo.png">
-        <div class="cast">
+        <div id="container" class="cast">
+            <script>
+                // Function to fetch movie details by movie ID
+                async function fetchMovieDetails(movieId) {
+                const apiKey = '3359eee818730a0f011a07b7e6e73375'; // Replace with your TMDB API key
+                const url = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}`;
 
+                try {
+                    const response = await fetch(url);
+                    const data = await response.json();
+                    return data.cast;
+                } catch (error) {
+                    console.log('Error fetching movie details:', error);
+                    return [];
+                }
+                }
+
+                // Function to fetch actor/crew details by person ID
+                async function fetchPersonDetails(personId, creditType) {
+                    const apiKey = '3359eee818730a0f011a07b7e6e73375'; // Replace with your TMDB API key
+                    const url = `https://api.themoviedb.org/3/person/${personId}/${creditType}?api_key=${apiKey}`;
+
+                try {
+                    const response = await fetch(url);
+                    const data = await response.json();
+                    return data.cast;
+                } catch (error) {
+                    console.log('Error fetching person details:', error);
+                    return [];
+                }
+                }
+
+                // Check session storage for the "type" and "id" values
+                const type = sessionStorage.getItem('type');
+                const id = sessionStorage.getItem('id');
+
+                // Function to create and append an image and text element to a parent element
+                function createImageWithText(parentElement, imageUrl, text) {
+                    const wrapperElement = document.createElement('div');
+                    wrapperElement.className = 'item';
+
+                    const imageElement = document.createElement('img');
+                    imageElement.src = imageUrl;
+                    imageElement.className = 'image';
+                    wrapperElement.appendChild(imageElement);
+
+                    const textElement = document.createElement('p');
+                    textElement.textContent = text;
+                    textElement.className = 'caption';
+                    wrapperElement.appendChild(textElement);
+
+                    parentElement.appendChild(wrapperElement);
+                    }
+
+                // Function to handle the different types and fetch the required data
+                async function fetchDataByType(type, id) {
+                    if (type === 'movie') {
+                        const movieCredits = await fetchMovieDetails(id);
+                        const containerElement = document.getElementById('container');
+                        movieCredits.forEach((cast) => {
+                        if (cast.profile_path) {
+                            const image = `https://image.tmdb.org/t/p/w200${cast.profile_path}`;
+                            const name = cast.name;
+                            createImageWithText(containerElement, image, name);
+                        }
+                        });
+                    } else if (type === 'cast') {
+                        const creditType = type === 'director' ? 'movie_credits' : 'combined_credits';
+                        const personCredits = await fetchPersonDetails(id, creditType);
+                        const containerElement = document.getElementById('container');
+                        personCredits.forEach((credit) => {
+                        if (credit.media_type === 'movie' && credit.poster_path) {
+                            const image = `https://image.tmdb.org/t/p/w200${credit.poster_path}`;
+                            const name = credit.title;
+                            createImageWithText(containerElement, image, name);
+                        }
+                        });
+                    } else {
+                        console.log('Invalid type');
+                    }
+                    }
+
+                // Call the function to fetch and handle the data based on the type and id
+                fetchDataByType(type, id);
+            </script>
         </div>
     </div>
     <div class="sidebar">
@@ -32,7 +115,7 @@
         <div class="linktime">
             <div class="boxbg">
                 <h2 class="subtitle">TO</h2>
-                <img draggable="false" class="tologo" src="tologo.png">
+                <img draggable="false" id="tologo" class="tologo" src="">
                 <h2 class="subtitle">2015</h2>
             </div>
             <div class="boxbg">
@@ -41,7 +124,7 @@
                 <script>
                     var links = sessionStorage.getItem('links');
                     document.getElementById('linksnum').textContent = links;
-                </script>            
+                </script>
             </div>
             <div class="boxbg">
                 <h2 class="subtitle">TIME</h2>
