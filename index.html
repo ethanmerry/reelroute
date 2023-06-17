@@ -34,7 +34,7 @@
                     Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMzU5ZWVlODE4NzMwYTBmMDExYTA3YjdlNmU3MzM3NSIsInN1YiI6IjY0ODc1OTIxYzAzNDhiMDBhZWQ1Nzc3YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qtny7zLA5JZuo2moI3UYBzi4grqAjwK5NMCyn85zO3U'
                   }
                 };
-                fetch('https://api.themoviedb.org/3/movie/$(idValue)/images?language=en', options)
+                fetch('https://api.themoviedb.org/3/movie/${idValue}/images?language=en', options)
                   .then(response => response.json())
                   .then(response => {
                     const logoPath = response.logos[0].file_path;
@@ -56,7 +56,40 @@
             </script>
             <img draggable="false" id="ending" src="" alt="film logo">
             <script>
+                fetch('files/endMovie.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        const idValue = data.id;
+                    })
+                    .catch(error => {
+                        console.log('Error:', error);
+                    });
+                const options = {
+                  method: 'GET',
+                  headers: {
+                    accept: 'application/json',
+                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMzU5ZWVlODE4NzMwYTBmMDExYTA3YjdlNmU3MzM3NSIsInN1YiI6IjY0ODc1OTIxYzAzNDhiMDBhZWQ1Nzc3YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qtny7zLA5JZuo2moI3UYBzi4grqAjwK5NMCyn85zO3U'
+                  }
+                };
+                fetch('https://api.themoviedb.org/3/movie/${idValue}/images?language=en', options)
+                  .then(response => response.json())
+                  .then(response => {
+                    const logoPath = response.logos[0].file_path;
+
+                    // Construct the full URL for the movie logo
+                    const logoURL = `https://image.tmdb.org/t/p/original${logoPath}`;
                 
+                    // Use the logoURL as needed (e.g., display it in an <img> element)
+                    const logoElement = document.getElementById("starting");
+                    if (logoURL) {
+                      logoElement.src = logoURL;
+                    } else {
+                      logoElement.alt = "Film logo not found.";
+                    }
+                  })
+                  .catch(error => {
+                    console.error('Error:', error);
+                  });
             </script>
             <div class="playbox">
                 <a href="play.html"> <h2 class="playtext">PLAY</h2> </a>
