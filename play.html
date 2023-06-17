@@ -74,7 +74,7 @@
                 function createImageWithText(parentElement, imageUrl, text) {
                     const wrapperElement = document.createElement('div');
                     wrapperElement.className = 'item';
-                    item.draggable = false;
+                    wrapperElement.draggable = false;
 
                     const imageElement = document.createElement('img');
                     imageElement.src = imageUrl;
