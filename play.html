@@ -13,13 +13,12 @@
             .then(response => response.json())
             .then(data => {
                 const idValue = data.id;
-                console.log(idValue)
+                sessionStorage.setItem('id', idValue);
             })
             .catch(error => {
                 console.log('Error:', error);
             });
 
-        sessionStorage.setItem('id', idValue);
         sessionStorage.setItem('type', "movie");
     </script>
     <link rel="icon" type="image/x-icon" href="images/favicon.svg">
