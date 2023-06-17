@@ -52,6 +52,10 @@
                 }
                 }
 
+                // Check session storage for the "type" and "id" values
+                const type = sessionStorage.getItem('type');
+                const id = sessionStorage.getItem('id');
+                
                 // Function to fetch actor/crew details by person ID
                 async function fetchPersonDetails(personId, creditType) {
                     const apiKey = '3359eee818730a0f011a07b7e6e73375'; // Replace with your TMDB API key
@@ -103,10 +107,7 @@
                     }
 
                 // Function to handle the different types and fetch the required data
-                async function fetchDataByType {
-                    // Check session storage for the "type" and "id" values
-                    const type = sessionStorage.getItem('type');
-                    const id = sessionStorage.getItem('id');
+                async function fetchDataByType(type, id) {
                     if (type === 'movie') {
                         const movieCredits = await fetchMovieDetails(id);
                         const containerElement = document.getElementById('container');
@@ -136,7 +137,7 @@
                     }
 
                 // Call the function to fetch and handle the data based on the type and id
-                fetchDataByType;
+                fetchDataByType(type, id);
             </script>
         </div>
     </div>
