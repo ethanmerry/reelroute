@@ -83,7 +83,7 @@
                     imageElement.addEventListener('click', () => {
                         sessionStorage.setItem('id',entityid);
                         const numlinks = sessionStorage.getItem('links');
-                        sessionStorage.setItem('links',numlinks);
+                        sessionStorage.setItem('links',numlinks+1);
                         const currentType = sessionStorage.getItem('type');
                         if (currentType == 'movie') {
                             sessionStorage.setItem('type','cast');
