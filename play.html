@@ -82,9 +82,9 @@
                     wrapperElement.appendChild(imageElement);
                     imageElement.addEventListener('click', () => {
                         sessionStorage.setItem('id',entityid);
-                        var numlinks = sessionStorage.getItem('links');
-                        numlinks=numlinks+1;
-                        sessionStorage.setItem('links',numlinks);
+                        let numlinks = sessionStorage.getItem('links');
+                        let updatedValue = +numlinks + 1;
+                        sessionStorage.setItem('links',updatedValue);
                         const currentType = sessionStorage.getItem('type');
                         if (currentType == 'movie') {
                             sessionStorage.setItem('type','cast');
