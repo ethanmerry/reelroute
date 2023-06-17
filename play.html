@@ -93,9 +93,10 @@
                         }
                         window.updatelinks();
                         window.updateposter();
-                        
-                        while (wrapperElement.hasChildNodes()) {
-                          wrapperElement.removeChild(wrapperElement.firstChild);
+
+                        const list = document.getElementById("container");
+                        while (list.hasChildNodes()) {
+                          list.removeChild(list.firstChild);
                         }                     
                         updatecredits()
 
