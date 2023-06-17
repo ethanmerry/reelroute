@@ -111,7 +111,7 @@
     color: #FFFFFF;
 }
 
-.cast {
+/*.cast {
     background-color: #000000;
     display: flex;
     justify-content: center;
@@ -126,7 +126,7 @@
     flex: 0 0 0;
     margin: 10px;
     text-align: center;
-  }
+  }*/
 
 .caption {
     font-family: 'Inter';
@@ -135,6 +135,30 @@
 
 .image {
     border-radius: 18px 18px 18px 18px;
-    min-height: 150px;
-    max-height: 270px;
 }
+
+.cast {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; /* Adjust the margin between images as needed */
+}
+
+.item {
+  flex-basis: 200px; /* Initial width of each image */
+  flex-grow: 1;
+  margin: 10px; /* Adjust the margin around each image as needed */
+}
+
+@media (max-width: 600px) {
+  .item {
+    flex-basis: calc(50% - 20px); /* Half the available width minus the margin */
+  }
+}
+
+@media (max-width: 400px) {
+  .item {
+    flex-basis: 100%; /* Full width on smaller screens */
+  }
+}
+
