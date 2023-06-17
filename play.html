@@ -178,6 +178,39 @@
             <div class="boxbg">
                 <h2 class="subtitle">TO</h2>
                 <img draggable="false" id="tologo" class="tologo" src="">
+                <script>
+                    // Retrieve the movie ID from session storage
+                    const movieID = sessionStorage.getItem('endID');
+                    
+                    // Set your TMDB API key
+                    const apiKey = '3359eee818730a0f011a07b7e6e73375';
+                    
+                    // Construct the API endpoint URL
+                    const url = `https://api.themoviedb.org/3/movie/${movieID}?api_key=${apiKey}`;
+                    
+                    // Make the HTTP request to the TMDB API
+                    fetch(url)
+                      .then(response => response.json())
+                      .then(data => {
+                        // Retrieve the movie logo URL from the API response
+                        const logoPath = data.production_companies[0].logo_path;
+                    
+                        // Construct the full URL for the movie logo
+                        const logoURL = `https://image.tmdb.org/t/p/original${logoPath}`;
+                    
+                        // Use the logoURL as needed (e.g., display it in an <img> element)
+                        const logoElement = document.getElementById("tologo");
+                        if (logoURL) {
+                          logoElement.src = logoURL;
+                        } else {
+                          logoElement.alt = "Film logo not found.";
+                        }
+                      })
+                      .catch(error => {
+                        console.error('Error:', error);
+                      });
+
+                </script>
             </div>
             <div class="boxbg">
                 <h2 class="subtitle">LINKS</h2>
