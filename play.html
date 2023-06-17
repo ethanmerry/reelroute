@@ -93,6 +93,11 @@
                         }
                         window.updatelinks();
                         window.updateposter();
+                        const parentElement = document.getElementById('parent');
+                        // Create the elements using the createImageWithText function
+                        const imageCreator = createImageWithText(parentElement, imageUrl, text, entityid);
+                        // Call the clearElements function to remove the elements
+                        imageCreator.clearElements();
                         updatecredits()
 
                     });
@@ -103,6 +108,14 @@
                     wrapperElement.appendChild(textElement);
 
                     parentElement.appendChild(wrapperElement);
+
+                    function clearElements() {
+                        parentElement.innerHTML = '';
+                      }
+                    
+                      return {
+                        clearElements: clearElements
+                      };
                     }
 
                 // Function to handle the different types and fetch the required data
