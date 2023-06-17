@@ -123,7 +123,7 @@
 }
 
 .item {
-    flex:  2 3 150px;
+    flex:  0 0 0;
     margin: 10px;
     text-align: center;
   }
@@ -135,4 +135,5 @@
 
 .image {
     border-radius: 18px 18px 18px 18px;
+    max-width: 150px;
 }
