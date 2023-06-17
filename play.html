@@ -126,8 +126,8 @@
         <img draggable="false" class="logo" src="images/ReelRoute White.svg">
         <img draggable="false" id="poster" class="poster" src="" alt="film poster">
         <script>
-            const id = sessionStorage.getItem('id');
-            const type = sessionStorage.getItem('type')
+            const currentid = sessionStorage.getItem('id');
+            const idtype = sessionStorage.getItem('type')
             
             function getPosterOrHeadshot(type, id) {
               const apiKey = "3359eee818730a0f011a07b7e6e73375"; // Replace with your TMDb API key
@@ -164,7 +164,7 @@
               return Promise.resolve(null);
             }
             
-            getPosterOrHeadshot(type, id)
+            getPosterOrHeadshot(idtype, currentid)
               .then(posterUrl => {
                 const posterElement = document.getElementById("poster");
                 if (posterUrl) {
