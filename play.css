@@ -63,7 +63,7 @@
     line-height: 15px;
     text-align: center;
     color: #FFFFFF;
-    padding-top: 10px;
+    padding-top: 20px;
 }
 
 .info {
@@ -78,11 +78,11 @@
 }
 
 .tologo {
-    width: 210px;
+    width: 190px;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    padding-bottom: 10px; 
+    padding-bottom: 20px; 
 }
 
 .boxbg {
