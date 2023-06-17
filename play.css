@@ -123,17 +123,21 @@
 }
 
 .item {
-    flex:  0 0 0;
+    flex-grow: 1;
     margin: 10px;
     text-align: center;
   }
 
 .caption {
     font-family: 'Inter';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 12px;
+    line-height: 15px;
     color: #FFFFFF;
 }
 
 .image {
     border-radius: 18px 18px 18px 18px;
-    max-width: 150px;
+    max-width: 165px;
 }
