@@ -66,13 +66,7 @@
                     return [];
                 }
                 }
-
-                function clearElements(parentElement) {
-                  while (parentElement.firstChild) {
-                    parentElement.removeChild(parentElement.firstChild);
-                  }
-                }
-                
+               
                 // Function to create and append an image and text element to a parent element
                 function createImageWithText(parentElement, imageUrl, text, entityid) {
                     const wrapperElement = document.createElement('div');
@@ -99,8 +93,10 @@
                         }
                         window.updatelinks();
                         window.updateposter();
-                        const parentElement = document.getElementById('parent');
-                        clearElements(parentElement);
+                        
+                        while (wrapperElement.firstChild) {
+                            wrapperElement.firstChild.remove();
+                          }                        
                         updatecredits()
 
                     });
