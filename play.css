@@ -123,8 +123,7 @@
 }
 
 .item {
-    flex: 0 0 0;
-    flex-grow: 1;
+    flex:  3 150px 2;
     margin: 10px;
     text-align: center;
   }
@@ -137,16 +136,3 @@
 .image {
     border-radius: 18px 18px 18px 18px;
 }
-
-@media (max-width: 600px) {
-  .item {
-    flex-basis: calc(50% - 20px); /* Half the available width minus the margin */
-  }
-}
-
-@media (max-width: 400px) {
-  .item {
-    flex-basis: 100%; /* Full width on smaller screens */
-  }
-}
-
