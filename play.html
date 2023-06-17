@@ -184,17 +184,22 @@
                     
                     // Set your TMDB API key
                     const apiKey = '3359eee818730a0f011a07b7e6e73375';
-                    
-                    // Construct the API endpoint URL
-                    const url = `https://api.themoviedb.org/3/movie/${movieID}?api_key=${apiKey}`;
-                    
+                                        
                     // Make the HTTP request to the TMDB API
-                    fetch(url)
+                    const options = {
+                      method: 'GET',
+                      headers: {
+                        accept: 'application/json',
+                        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMzU5ZWVlODE4NzMwYTBmMDExYTA3YjdlNmU3MzM3NSIsInN1YiI6IjY0ODc1OTIxYzAzNDhiMDBhZWQ1Nzc3YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qtny7zLA5JZuo2moI3UYBzi4grqAjwK5NMCyn85zO3U'
+                      }
+                    };
+                    
+                    fetch('https://api.themoviedb.org/3/movie/${movieID}/images?language=en', options)
                       .then(response => response.json())
                       .then(data => {
-                        // Retrieve the movie logo URL from the API response
-                        const logoPath = data.production_companies[0].logo_path;
-                    
+
+                        const logoPath = data.logos[0].file_path;
+
                         // Construct the full URL for the movie logo
                         const logoURL = `https://image.tmdb.org/t/p/original${logoPath}`;
                     
