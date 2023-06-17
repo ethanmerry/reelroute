@@ -95,7 +95,8 @@
                         } else {
                             sessionStorage.setItem('type','movie');
                         }
-                        
+                        window.updatelinks();
+
                     });
 
                     const textElement = document.createElement('p');
@@ -242,8 +243,10 @@
                 <h2 class="subtitle">LINKS</h2>
                 <h3 id="linksnum" class="info">0</h3>
                 <script>
-                    var links = sessionStorage.getItem('links');
-                    document.getElementById('linksnum').textContent = links;
+                    window.updatelinks = function() {
+                        var links = sessionStorage.getItem('links');
+                        document.getElementById('linksnum').textContent = links;
+                    }
                 </script>
             </div>
             <div class="boxbg">
