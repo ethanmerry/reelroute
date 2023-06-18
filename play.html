@@ -140,7 +140,7 @@
                     }
                     }
 
-                function updatecredits() {
+                window.updatecredits = function() {
                     // Check session storage for the "type" and "id" values
                     const type = sessionStorage.getItem('type');
                     const id = sessionStorage.getItem('id');
@@ -206,6 +206,30 @@
             updateposter();
         </script>
         <div class="linktime">
+            <div class="boxbg">
+                <h2 class="subtitle">MESSED UP?</h2>
+                <h3 class="info">RETURN TO START</h3>
+                <script>
+                    imageElement.addEventListener('click', () => {
+                        fetch('files/startingMovie.json')
+                            .then(response => response.json())
+                            .then(data => {
+                                const idValue = data.id;
+                                sessionStorage.setItem('id', idValue);
+                            })
+                            .catch(error => {
+                                console.log('Error:', error);
+                            });
+                        sessionStorage.setItem('type','movie');
+                        window.updateposter();
+                        const list = document.getElementById("container");
+                        while (list.hasChildNodes()) {
+                          list.removeChild(list.firstChild);
+                        }                     
+                        window.updatecredits()
+                    });
+                </script>
+            </div>
             <div class="boxbg">
                 <h2 class="subtitle">TO</h2>
                 <img draggable="false" id="tologo" class="tologo" src="">
