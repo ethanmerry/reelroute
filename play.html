@@ -206,11 +206,12 @@
             updateposter();
         </script>
         <div class="linktime">
-            <div class="boxbg">
+            <button class="boxbg" onclick="returntostart()">
                 <h2 class="subtitle">MESSED UP?</h2>
-                <h3 class="info">RETURN TO START</h3>
+                <h3 class="returnstart">RETURN TO START</h3>
                 <script>
-                    imageElement.addEventListener('click', () => {
+                    function returntostart() {
+                        console.log("return to start");
                         fetch('files/startingMovie.json')
                             .then(response => response.json())
                             .then(data => {
@@ -227,9 +228,9 @@
                           list.removeChild(list.firstChild);
                         }                     
                         window.updatecredits()
-                    });
+                    };
                 </script>
-            </div>
+            </button>
             <div class="boxbg">
                 <h2 class="subtitle">TO</h2>
                 <img draggable="false" id="tologo" class="tologo" src="">
