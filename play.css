@@ -78,7 +78,7 @@
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 12px;
+    font-size: 24px;
     line-height: 0%;
     text-align: center;
     color: #FFFFFF;
@@ -188,4 +188,11 @@
   background: -webkit-linear-gradient(to left, #ff6a00, #ee0979);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to left, #ff6a00, #ee0979);  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
   cursor: progress;
+}
+
+.textbox {
+    left: 0%;
+    top: 60%;
+    width: 100%;
+    height: 100%;
 }
