@@ -41,10 +41,18 @@
         <p>Whilst your here, check out how to play, so you're a pro by the time you play. Like James Bond, but at connecting films. </p>
     </div>
     <script>
-        function on() {
-          document.getElementById("overlay").style.display = "block";
-        }
-        //if it isnt able to connect to api then run function
+        const options = {
+          method: 'GET',
+          headers: {
+            accept: 'application/json',
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMzU5ZWVlODE4NzMwYTBmMDExYTA3YjdlNmU3MzM3NSIsInN1YiI6IjY0ODc1OTIxYzAzNDhiMDBhZWQ1Nzc3YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qtny7zLA5JZuo2moI3UYBzi4grqAjwK5NMCyn85zO3U'
+          }
+        };
+        
+        fetch('https://api.themoviedb.org/3/authentication', options)
+          .then(response => response.json())
+          .then(response => document.getElementById("overlay").style.display = "block")
+          .catch(err => document.getElementById("overlay").style.display = "block");
     </script>
     <div class="main">
         <div id="container" class="cast">
@@ -218,7 +226,7 @@
             updateposter();
         </script>
         <div class="linktime">
-            <div class="boxbg" onclick="returntostart()">
+            <div class="boxbg" onclick="returntostart()" style="cursor: pointer">
                 <h3 class="returnstart">RETURN TO START</h3>
                 <script>
                     function returntostart() {
