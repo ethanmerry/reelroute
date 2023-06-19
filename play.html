@@ -6,6 +6,23 @@
     <title id="pageTitle"> ReelRoute</title>
     <script src="movietitle.js"></script>
     <script>
+        const options = {
+          method: 'GET',
+          headers: {
+            accept: 'application/json',
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMzU5ZWVlODE4NzMwYTBmMDExYTA3YjdlNmU3MzM3NSIsInN1YiI6IjY0ODc1OTIxYzAzNDhiMDBhZWQ1Nzc3YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qtny7zLA5JZuo2moI3UYBzi4grqAjwK5NMCyn85zO3U'
+          }
+        };
+        
+        fetch('https://api.themoviedb.org/3/authentication', options)
+          .then(response => response.json())
+          .then(response => document.getElementById("overlay").style.display = "none")
+          .catch(err => {
+              document.getElementById("overlay").style.display = "block"
+              document.title = "Unable to Connect - ReelRoute";
+        });
+    </script>
+    <script>
         sessionStorage.setItem('links', 0);
         var nowdate = new Date()
         sessionStorage.setItem('startTime', nowdate);
@@ -45,20 +62,6 @@
             <p class="errsubtitle">Whilst you're here, why not take a look at how to play ReelRoute, so when you get around to playing you are a master at the art of film navigation.</p>
         </div>    
     </div>
-    <script>
-        const options = {
-          method: 'GET',
-          headers: {
-            accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMzU5ZWVlODE4NzMwYTBmMDExYTA3YjdlNmU3MzM3NSIsInN1YiI6IjY0ODc1OTIxYzAzNDhiMDBhZWQ1Nzc3YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qtny7zLA5JZuo2moI3UYBzi4grqAjwK5NMCyn85zO3U'
-          }
-        };
-        
-        fetch('https://api.themoviedb.org/3/authentication', options)
-          .then(response => response.json())
-          .then(response => document.getElementById("overlay").style.display = "none")
-          .catch(err => document.getElementById("overlay").style.display = "block");
-    </script>
     <div class="main">
         <div id="container" class="cast">
             <script>
