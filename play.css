@@ -22,7 +22,7 @@
 .errlogo {
     position: absolute;
     width: 400px;
-    left: calc(50% - 307px/2 - 0.5px);
+    left: calc(50% - 400px/2 - 0.5px);
     top: 131px;
 }
 
