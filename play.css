@@ -19,6 +19,14 @@
     top: 33px;
 }
 
+.404logo {
+    position: absolute;
+    width: 307px;
+    height: 75px;
+    left: calc(50% - 307px/2 - 0.5px);
+    top: 131px;
+}
+
 .poster {
     position: absolute;
     width: 194px;
