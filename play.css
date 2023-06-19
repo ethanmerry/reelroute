@@ -78,6 +78,18 @@
     color: #FFFFFF;
 }
 
+.returnstart {
+    font-family: 'Sanshiro Display';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 28px;
+    line-height: 0%;
+    padding-bottom: 30px;
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
 .tologo {
     width: 190px;
     display: block;
