@@ -74,6 +74,17 @@
     padding-top: 20px;
 }
 
+.subtitle {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 0%;
+    text-align: center;
+    color: #FFFFFF;
+    padding-top: 20px;
+}
+
 .info {
     font-family: 'Poppins', sans-serif;
     font-style: normal;
