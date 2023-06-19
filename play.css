@@ -64,7 +64,7 @@
 }
 
 .subtitle {
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 900;
     font-size: 12px;
@@ -75,9 +75,9 @@
 }
 
 .info {
-    font-family: 'Sanshiro Display';
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
-    font-weight: 900;
+    font-weight: 700;
     font-size: 48px;
     line-height: 0%;
     padding-bottom: 30px;
@@ -87,9 +87,9 @@
 }
 
 .returnstart {
-    font-family: 'Sanshiro Display';
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
-    font-weight: 900;
+    font-weight: 700;
     font-size: 21px;
     padding-bottom: 30px;
     text-align: center;
@@ -122,9 +122,9 @@
 .title {
     position: absolute;
     left: 50px;
-    font-family: 'Futura XBlkCnIt BT';
+    font-family: 'Poppins', sans-serif;
     font-style: italic;
-    font-weight: 400;
+    font-weight: 900;
     font-size: 36px;
     line-height: 43px;
     display: flex;
@@ -152,7 +152,8 @@
   }
 
 .caption {
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
     font-style: normal;
     font-size: 12px;
     line-height: 15px;
