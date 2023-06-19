@@ -56,7 +56,7 @@
         
         fetch('https://api.themoviedb.org/3/authentication', options)
           .then(response => response.json())
-          .then(response => document.getElementById("overlay").style.display = "block")
+          .then(response => document.getElementById("overlay").style.display = "none")
           .catch(err => document.getElementById("overlay").style.display = "block");
     </script>
     <div class="main">
