@@ -50,7 +50,7 @@
     left: calc(50% - 551px/2 - 0.5px);
     top: 241px;
     
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 900;
     font-size: 24px;
@@ -82,9 +82,9 @@
 .title {
     position: absolute;
     left: 50px;
-    font-family: 'Futura XBlkCnIt BT';
+    font-family: 'Poppins', sans-serif;
     font-style: italic;
-    font-weight: 400;
+    font-weight: 900;
     font-size: 36px;
     line-height: 43px;
     display: flex;
@@ -130,7 +130,7 @@ h3 {
     height: 74px;
     top: 0px;
     
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 900;
     font-size: 24px;
@@ -191,7 +191,7 @@ h3 {
     top: -9px;
     left: 250px;
 
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 900;
     font-size: 20px;
@@ -209,7 +209,7 @@ h3 {
     top: -30px;
     left: 255px;
     
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 900;
     font-size: 55px;
