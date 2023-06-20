@@ -203,7 +203,7 @@
   height: 100%; /* Full height (cover the whole page) */
   top: 0;
   left: 0;
-  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  background-color: rgba(0,0,0,0.75); /* Black background with opacity */
   z-index: 3;
   cursor: progress;
 }
@@ -212,8 +212,8 @@
     position: absolute;
     left: 30%;
     top: 20%;
-    height: 60%
-    width: 40%;
+    height: 150px
+    max-width: 520px;
     background-color: white;
     border-radius: 18px 18px 18px 18px;
     box-shadow: 0px 4px 52px rgba(0, 0, 0, 0.25);
