@@ -198,13 +198,13 @@
 
 #statistics {
   position: fixed; /* Sit on top of the page content */
-  display: block; /* Hidden by default */
+  display: none; /* Hidden by default */
   width: 100%; /* Full width (cover the whole page) */
   height: 100%; /* Full height (cover the whole page) */
   top: 0;
   left: 0;
   background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-  z-index: 2;
+  z-index: 3;
   cursor: progress;
 }
 
