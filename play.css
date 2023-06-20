@@ -184,7 +184,8 @@
   left: 0;
   background: #ee0979;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to left, #ff6a00, #ee0979);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #ff6a00, #ee0979);  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  background: linear-gradient(to left, #ff6a00, #ee0979);
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
   cursor: progress;
 }
 
@@ -202,7 +203,8 @@
   height: 100%; /* Full height (cover the whole page) */
   top: 0;
   left: 0;
-  background-color: white; /* Black background with opacity */
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 2;
   cursor: progress;
 }
 
