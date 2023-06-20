@@ -210,10 +210,10 @@
 
 .stattextbox {
     position: absolute;
-    left: 30%;
+    left: 45%;
     top: 20%;
-    height: 150px;
-    max-width: 520px;
+    height: 700px;
+    width: 520px;
     background-color: white;
     border-radius: 18px 18px 18px 18px;
     box-shadow: 0px 4px 52px rgba(0, 0, 0, 0.25);
