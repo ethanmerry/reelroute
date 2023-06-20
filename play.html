@@ -62,6 +62,31 @@
             <p class="errsubtitle">Whilst you're here, why not take a look at how to play ReelRoute, so when you get around to playing you are a master at the art of film navigation.</p>
         </div>    
     </div>
+    <div id="statistics">
+        <div class="textbox">
+            <h2 class="returnstart">STATISTICS</h2>
+            <div class="statbox">
+                <p class="subtitle">PLAYED</p>
+                <p class="info">1</p>
+            </div>
+            <div class="statbox">
+                <p class="subtitle">CURRENT STREAK</p>
+                <p class="info">1</p>
+            </div>
+            <div class="statbox">
+                <p class="subtitle">MAX STREAK</p>
+                <p class="info">2</p>
+            </div>
+            <div class="statbox">
+                <p class="subtitle">LEAST LINKS</p>
+                <p class="info">1</p>
+            </div>
+            <div class="statbox">
+                <p class="subtitle">LEAST TIME</p>
+                <p class="info">2</p>
+            </div>
+        </div>    
+    </div>
     <div class="main">
         <div id="container" class="cast">
             <script>
@@ -119,14 +144,20 @@
                         } else {
                             sessionStorage.setItem('type','movie');
                         }
+
                         window.updatelinks();
                         window.updateposter();
-
+                        
                         const list = document.getElementById("container");
                         while (list.hasChildNodes()) {
                           list.removeChild(list.firstChild);
                         }                     
                         updatecredits()
+                        
+                        endmovieid = sessionStorage.getItem('endID');
+                        if (entityid==endmovieid) {
+                            document.getElementById("statistics").style.display = "block"
+                        }
 
                     });
 
