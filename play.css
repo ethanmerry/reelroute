@@ -202,7 +202,7 @@
   height: 100%; /* Full height (cover the whole page) */
   top: 0;
   left: 0;
-  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  background-color: white; /* Black background with opacity */
   cursor: progress;
 }
 
