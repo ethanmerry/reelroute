@@ -23,29 +23,36 @@
         });
     </script>
     <script>
-        sessionStorage.setItem('links', 0);
+        var day = localStorage.getItem("startTime");
         var nowdate = new Date()
-        sessionStorage.setItem('startTime', nowdate);
-        fetch('files/startingMovie.json')
-            .then(response => response.json())
-            .then(data => {
-                const idValue = data.id;
-                sessionStorage.setItem('id', idValue);
-            })
-            .catch(error => {
-                console.log('Error:', error);
-            });
-
-        sessionStorage.setItem('type', "movie");
-        fetch('files/endMovie.json')
-            .then(response => response.json())
-            .then(data => {
-                const idValue = data.id;
-                sessionStorage.setItem('endID', idValue);
-            })
-            .catch(error => {
-                console.log('Error:', error);
-            });
+        if (day!=nowdate) {
+            document.getElementById("home").style.display = "block"
+            localStorage.setItem('startTime', nowdate);
+        
+            localStorage.setItem('links', 0);
+            fetch('files/startingMovie.json')
+                .then(response => response.json())
+                .then(data => {
+                    const idValue = data.id;
+                    localStorage.setItem('id', idValue);
+                })
+                .catch(error => {
+                    console.log('Error:', error);
+                });
+    
+            localStorage.setItem('type', "movie");
+            fetch('files/endMovie.json')
+                .then(response => response.json())
+                .then(data => {
+                    const idValue = data.id;
+                    localStorage.setItem('endID', idValue);
+                })
+                .catch(error => {
+                    console.log('Error:', error);
+                });
+        } else { 
+            document.getElementById("welcomeback").style.display = "block";
+        };
     </script>
     <link rel="icon" type="image/x-icon" href="images/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -134,15 +141,15 @@
                     });
                     wrapperElement.appendChild(imageElement);
                     imageElement.addEventListener('click', () => {
-                        sessionStorage.setItem('id',entityid);
-                        let numlinks = sessionStorage.getItem('links');
+                        localStorage.setItem('id',entityid);
+                        let numlinks = localStorage.getItem('links');
                         let updatedValue = +numlinks + 1;
-                        sessionStorage.setItem('links',updatedValue);
-                        const currentType = sessionStorage.getItem('type');
+                        localStorage.setItem('links',updatedValue);
+                        const currentType = localStorage.getItem('type');
                         if (currentType == 'movie') {
-                            sessionStorage.setItem('type','cast');
+                            localStorage.setItem('type','cast');
                         } else {
-                            sessionStorage.setItem('type','movie');
+                            localStorage.setItem('type','movie');
                         }
 
                         window.updatelinks();
@@ -154,7 +161,7 @@
                         }                     
                         updatecredits()
                         
-                        endmovieid = sessionStorage.getItem('endID');
+                        endmovieid = localStorage.getItem('endID');
                         if (entityid == endmovieid) {
                             document.getElementById("statistics").style.display = "block";
                         }
@@ -201,8 +208,8 @@
 
                 window.updatecredits = function() {
                     // Check session storage for the "type" and "id" values
-                    const type = sessionStorage.getItem('type');
-                    const id = sessionStorage.getItem('id');
+                    const type = localStorage.getItem('type');
+                    const id = localStorage.getItem('id');
                     // Call the function to fetch and handle the data based on the type and id
                     fetchDataByType(type, id);
                 };
@@ -250,8 +257,8 @@
             }
             
             window.updateposter = function() {
-                const currentid = sessionStorage.getItem('id');
-                const idtype = sessionStorage.getItem('type')
+                const currentid = localStorage.getItem('id');
+                const idtype = localStorage.getItem('type')
                 getPosterOrHeadshot(idtype, currentid)
                   .then(posterUrl => {
                     const posterElement = document.getElementById("poster");
@@ -274,12 +281,12 @@
                             .then(response => response.json())
                             .then(data => {
                                 const idValue = data.id;
-                                sessionStorage.setItem('id', idValue);
+                                localStorage.setItem('id', idValue);
                             })
                             .catch(error => {
                                 console.log('Error:', error);
                             });
-                        sessionStorage.setItem('type','movie');
+                        localStorage.setItem('type','movie');
                         window.updateposter();
                         const list = document.getElementById("container");
                         while (list.hasChildNodes()) {
@@ -294,7 +301,7 @@
                 <img draggable="false" id="tologo" class="tologo" src="">
                 <script>
                     // Retrieve the movie ID from session storage
-                    const movieID = sessionStorage.getItem('endID');
+                    const movieID = localStorage.getItem('endID');
                     
                     const options = {
                       method: 'GET',
@@ -330,7 +337,7 @@
                 <h3 id="linksnum" class="info">0</h3>
                 <script>
                     window.updatelinks = function() {
-                        var links = sessionStorage.getItem('links');
+                        var links = localStorage.getItem('links');
                         document.getElementById('linksnum').textContent = links;
                     }
                 </script>
