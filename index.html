@@ -207,8 +207,8 @@
                         fetch('https://api.themoviedb.org/3/movie/298618?language=en-US', apitype)
                           .then(response => response.json())
                           .then(response => {
-                              var status = response.status;
-                              var runtime = response.runtime;
+                              status = response.status;
+                              runtime = response.runtime;
                           })
                           .catch(err => console.error(err));
                         console.log(credit.media_type);
