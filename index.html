@@ -215,9 +215,9 @@
                           .catch(err => console.error(err));
                         console.log(credit.media_type);
                         console.log(credit.poster_path);
-                        console.log(status);
+                        console.log(response.status);
                         console.log(credit.genre_ids);
-                        console.log(runtime);
+                        console.log(response.runtime);
                         if (
                             credit.media_type === 'movie' &&  // Only movies
                             credit.poster_path &&  // Must have a poster path
