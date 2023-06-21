@@ -195,7 +195,7 @@
                         const containerElement = document.getElementById('container');
                         personCredits.forEach((credit) => {
                         const newmovieid = credit.id;
-                        const options = {
+                        const apitype = {
                             method: 'GET',
                             headers: {
                                 accept: 'application/json',
@@ -203,11 +203,13 @@
                             }
                         };
                         
-                        fetch('https://api.themoviedb.org/3/movie/298618?language=en-US', options)
+                        fetch('https://api.themoviedb.org/3/movie/298618?language=en-US', apitype)
                           .then(response => response.json())
                           .then(response => {
                               const status = response.status;
                               const runtime = response.runtime;
+                              console.log(status);
+                              console.log(runtime);
                           })
                           .catch(err => console.error(err));
                         if (
@@ -325,14 +327,14 @@
                     // Retrieve the movie ID from session storage
                     const movieID = localStorage.getItem('endID');
                     
-                    const options = {
+                    const typeofapi = {
                       method: 'GET',
                       headers: {
                         accept: 'application/json',
                         Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMzU5ZWVlODE4NzMwYTBmMDExYTA3YjdlNmU3MzM3NSIsInN1YiI6IjY0ODc1OTIxYzAzNDhiMDBhZWQ1Nzc3YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qtny7zLA5JZuo2moI3UYBzi4grqAjwK5NMCyn85zO3U'
                       }
                     };
-                    fetch('https://api.themoviedb.org/3/movie/298618/images?language=en', options)
+                    fetch('https://api.themoviedb.org/3/movie/298618/images?language=en', typeofapi)
                       .then(response => response.json())
                       .then(response => {
                         const logoPath = response.logos[0].file_path;
