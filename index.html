@@ -194,7 +194,7 @@
                         const personCredits = await fetchPersonDetails(id, creditType);
                         const containerElement = document.getElementById('container');
                         personCredits.forEach((credit) => {
-                        const newmovieid = data.id;
+                        const newmovieid = credit.id;
                         const options = {
                             method: 'GET',
                             headers: {
