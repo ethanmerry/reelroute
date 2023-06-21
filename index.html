@@ -196,6 +196,7 @@
                         personCredits.forEach((credit) => {
                         const apiKey = '3359eee818730a0f011a07b7e6e73375'; // Replace with your TMDB API key
                         const moviecheckid = credit.id;
+                            console.log(moviecheckid);
                         fetch(`https://api.themoviedb.org/3/movie/${moviecheckid}?api_key=${apiKey}`)
                           .then(response => response.json())
                           .then(data => {
