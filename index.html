@@ -194,6 +194,7 @@
                         const personCredits = await fetchPersonDetails(id, creditType);
                         const containerElement = document.getElementById('container');
                         personCredits.forEach((credit) => {
+                        const newmovieid = data.id;
                         const options = {
                             method: 'GET',
                             headers: {
@@ -202,7 +203,7 @@
                             }
                         };
                         
-                        fetch('https://api.themoviedb.org/3/movie/movie_id?language=en', options)
+                        fetch('https://api.themoviedb.org/3/movie/${newmovieid}?language=en', options)
                           .then(response => response.json())
                           .then(response => {
                               const status = data.status;
