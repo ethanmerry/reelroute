@@ -204,6 +204,9 @@
                             }
                         };
                         
+                        let status;
+                        let runtime;
+                            
                         fetch('https://api.themoviedb.org/3/movie/298618?language=en-US', apitype)
                           .then(response => response.json())
                           .then(response => {
