@@ -203,7 +203,7 @@
                             }
                         };
                         
-                        fetch('https://api.themoviedb.org/3/movie/',newmovieid,'?language=en-US', options)
+                        fetch('https://api.themoviedb.org/3/movie/569094?language=en-US', options)
                           .then(response => response.json())
                           .then(response => {
                               const status = response.status;
@@ -332,7 +332,7 @@
                         Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMzU5ZWVlODE4NzMwYTBmMDExYTA3YjdlNmU3MzM3NSIsInN1YiI6IjY0ODc1OTIxYzAzNDhiMDBhZWQ1Nzc3YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qtny7zLA5JZuo2moI3UYBzi4grqAjwK5NMCyn85zO3U'
                       }
                     };
-                    fetch('https://api.themoviedb.org/3/movie/',movieID',/images?language=en', options)
+                    fetch('https://api.themoviedb.org/3/movie/569094/images?language=en', options)
                       .then(response => response.json())
                       .then(response => {
                         const logoPath = response.logos[0].file_path;
