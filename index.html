@@ -52,10 +52,7 @@
                 });
         } else { 
             document.getElementById("welcomeback").style.display = "block";
-            window.updatelinks = function() {
-                var links = localStorage.getItem('links');
-                document.getElementById('linksnum').textContent = links;
-            }
+            window.updatelinks()
         };
     </script>
     <link rel="icon" type="image/x-icon" href="images/favicon.svg">
