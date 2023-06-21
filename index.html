@@ -203,11 +203,11 @@
                             }
                         };
                         
-                        fetch('https://api.themoviedb.org/3/movie/${newmovieid}?language=en', options)
+                        fetch('https://api.themoviedb.org/3/movie/${newmovieid}?language=en-US', options)
                           .then(response => response.json())
                           .then(response => {
-                              const status = data.status;
-                              const runtime = data.runtime;
+                              const status = response.status;
+                              const runtime = response.runtime;
                           })
                           .catch(err => console.error(err));
                         if (
