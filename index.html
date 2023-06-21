@@ -120,6 +120,7 @@
                 try {
                     const response = await fetch(url);
                     const data = await response.json();
+                    console.log(data);
                     return data.cast;
                 } catch (error) {
                     console.log('Error fetching person details:', error);
