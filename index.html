@@ -194,7 +194,14 @@
                         const personCredits = await fetchPersonDetails(id, creditType);
                         const containerElement = document.getElementById('container');
                         personCredits.forEach((credit) => {
-                        if (credit.media_type === 'movie' && credit.poster_path) {
+                        if (
+                            credit.media_type === 'movie' &&  // Only movies
+                            credit.poster_path &&  // Must have a poster path
+                            credit.release_date &&  // Must have a release date
+                            credit.status === 'Released' &&  // Must have a release status of "Released"
+                            credit.genre_ids.includes(99) &&  // Genre ID for "Documentary"
+                            credit.runtime && credit.runtime > 60  // Duration is above 1 hour (60 minutes)
+                        ) {
                                 const image = `https://image.tmdb.org/t/p/w200${credit.poster_path}`;
                                 const name = credit.title;
                                 const entityid = credit.id;
