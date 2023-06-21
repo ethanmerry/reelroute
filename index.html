@@ -116,7 +116,7 @@
                 // Function to fetch actor/crew details by person ID
                 async function fetchPersonDetails(personId, creditType) {
                     const apiKey = '3359eee818730a0f011a07b7e6e73375'; // Replace with your TMDB API key
-                    const url = `https://api.themoviedb.org/3/person/${personId}/${creditType}?api_key=${apiKey}`;
+                    const url = `https://api.themoviedb.org/3/person/${personId}/movie_credits?api_key=${apiKey}`;
 
                 try {
                     const response = await fetch(url);
@@ -191,8 +191,7 @@
                         }
                         });
                     } else if (type === 'cast') {
-                        const creditType = type === 'director' ? 'movie_credits' : 'combined_credits';
-                        const personCredits = await fetchPersonDetails(id, creditType);
+                        const personCredits = await fetchPersonDetails(id);
                         const containerElement = document.getElementById('container');
                         personCredits.forEach((credit) => {
                         const newmovieid = credit.id;
@@ -204,8 +203,8 @@
                             }
                         };
                         
-                        let status;
-                        let runtime;
+                        var status;
+                        var runtime;
                             
                         fetch('https://api.themoviedb.org/3/movie/298618?language=en-US', apitype)
                           .then(response => response.json())
