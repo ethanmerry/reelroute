@@ -52,6 +52,10 @@
                 });
         } else { 
             document.getElementById("welcomeback").style.display = "block";
+            window.updatelinks = function() {
+                var links = localStorage.getItem('links');
+                document.getElementById('linksnum').textContent = links;
+            }
         };
     </script>
     <link rel="icon" type="image/x-icon" href="images/favicon.svg">
@@ -276,17 +280,17 @@
                 <h3 class="returnstart">RETURN TO START</h3>
                 <script>
                     function returntostart() {
-                        console.log("return to start");
                         fetch('files/startingMovie.json')
                             .then(response => response.json())
                             .then(data => {
                                 const idValue = data.id;
                                 localStorage.setItem('id', idValue);
+                                localStorage.setItem('type','movie');
+
                             })
                             .catch(error => {
                                 console.log('Error:', error);
                             });
-                        localStorage.setItem('type','movie');
                         window.updateposter();
                         const list = document.getElementById("container");
                         while (list.hasChildNodes()) {
