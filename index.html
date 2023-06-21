@@ -208,8 +208,6 @@
                           .then(response => {
                               const status = response.status;
                               const runtime = response.runtime;
-                              console.log(status);
-                              console.log(runtime);
                           })
                           .catch(err => console.error(err));
                         if (
@@ -219,6 +217,7 @@
                             !credit.genre_ids.includes(99) &&  // Genre ID for "Documentary"
                             runtime && runtime > 60  // Duration is above 1 hour (60 minutes)
                         ) {
+                                console.log("in the if");
                                 const image = `https://image.tmdb.org/t/p/w200${credit.poster_path}`;
                                 const name = credit.title;
                                 const entityid = credit.id;
