@@ -120,7 +120,6 @@
                 try {
                     const response = await fetch(url);
                     const data = await response.json();
-                    console.log(data);
                     return data.cast;
                 } catch (error) {
                     console.log('Error fetching person details:', error);
@@ -195,13 +194,23 @@
                         const personCredits = await fetchPersonDetails(id, creditType);
                         const containerElement = document.getElementById('container');
                         personCredits.forEach((credit) => {
+                        const apiKey = '3359eee818730a0f011a07b7e6e73375'; // Replace with your TMDB API key
+                        const moviecheckid = credit.id;
+                        fetch(`https://api.themoviedb.org/3/movie/${moviecheckid}?api_key=${apiKey}`)
+                          .then(response => response.json())
+                          .then(data => {
+                            const status = data.status;
+                            const runtime = data.runtime;
+                          })
+                          .catch(error => {
+                            console.error('Error fetching movie details:', error);
+                          });
                         if (
                             credit.media_type === 'movie' &&  // Only movies
                             credit.poster_path &&  // Must have a poster path
-                            credit.release_date &&  // Must have a release date
-                            credit.status === 'Released' &&  // Must have a release status of "Released"
+                            status === 'released' &&  // Must have a release date
                             credit.genre_ids.includes(99) &&  // Genre ID for "Documentary"
-                            credit.runtime && credit.runtime > 60  // Duration is above 1 hour (60 minutes)
+                            runtime && runtime > 60  // Duration is above 1 hour (60 minutes)
                         ) {
                                 const image = `https://image.tmdb.org/t/p/w200${credit.poster_path}`;
                                 const name = credit.title;
