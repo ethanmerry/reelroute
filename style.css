@@ -253,8 +253,8 @@
         background-color: black;
         position: absolute;
         left: 0%;
-        top: 200px;
-        height: calc(100% - 200px;
+        top: 150px;
+        height: calc(100% - 150px);
         width: 100%;
     }
     
