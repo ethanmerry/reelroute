@@ -36,7 +36,6 @@
         fetch('https://api.themoviedb.org/3/authentication', options)
           .then(response => response.json())
           .then(response => {
-                console.log("I JUST CANT WAIT TO BE KING");
                 var done = localStorage.getItem('completed');
                 var day = localStorage.getItem("startTime");
                 var nowdate = new Date()
