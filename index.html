@@ -16,44 +16,46 @@
         
         fetch('https://api.themoviedb.org/3/authentication', options)
           .then(response => response.json())
-          .then(response => document.getElementById("overlay").style.display = "none")
+          .then(response => {
+                var done = localStorage.getItem('completed');
+                var day = localStorage.getItem("startTime");
+                var nowdate = new Date()
+                if (day!=nowdate || s_null(day)=true) {
+                    done=false;
+                    document.getElementById("home").style.display = "block";
+                    localStorage.setItem('startTime', nowdate);
+                
+                    localStorage.setItem('links', 0);
+                    fetch('files/startingMovie.json')
+                        .then(response => response.json())
+                        .then(data => {
+                            const idValue = data.id;
+                            localStorage.setItem('id', idValue);
+                        })
+                        .catch(error => {
+                            console.log('Error:', error);
+                        });
+            
+                    localStorage.setItem('type', "movie");
+                    fetch('files/endMovie.json')
+                        .then(response => response.json())
+                        .then(data => {
+                            const idValue = data.id;
+                            localStorage.setItem('endID', idValue);
+                        })
+                        .catch(error => {
+                            console.log('Error:', error);
+                        });
+                } else if (day == nowdate && done=false){ 
+                    document.getElementById("welcomeback").style.display = "block";
+                } else {
+                    document.getElementById("completed").style.display = "block";
+                 };
+                        })
           .catch(err => {
-              document.getElementById("overlay").style.display = "block"
+              document.getElementById("overlay").style.display = "block";
               document.title = "Unable to Connect - ReelRoute";
-        });
-    </script>
-    <script>
-        localStorage.setItem('endID', '976573');
-        var day = localStorage.getItem("startTime");
-        var nowdate = new Date()
-        if (day!=nowdate) {
-            document.getElementById("home").style.display = "block"
-            localStorage.setItem('startTime', nowdate);
-        
-            localStorage.setItem('links', 0);
-            fetch('files/startingMovie.json')
-                .then(response => response.json())
-                .then(data => {
-                    const idValue = data.id;
-                    localStorage.setItem('id', idValue);
-                })
-                .catch(error => {
-                    console.log('Error:', error);
-                });
-    
-            localStorage.setItem('type', "movie");
-            fetch('files/endMovie.json')
-                .then(response => response.json())
-                .then(data => {
-                    const idValue = data.id;
-                    localStorage.setItem('endID', idValue);
-                })
-                .catch(error => {
-                    console.log('Error:', error);
-                });
-        } else { 
-            document.getElementById("welcomeback").style.display = "block";
-        };
+          });
     </script>
     <link rel="icon" type="image/x-icon" href="images/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -68,6 +70,34 @@
             <h2 class="info">Oops! Hold on tight!</h2>
             <p class="errsubtitle">Sadly, the Force wasn't on our side when it came to obtaining our movie reels. It seems that our connection to our movies have been disrupted, making it unable for you to play right now. You can try overcoming this disturbance by refreshing the page or ensuring a strong network connection.</p>
             <p class="errsubtitle">Whilst you're here, why not take a look at how to play ReelRoute, so when you get around to playing you are a master at the art of film navigation.</p>
+        </div>    
+    </div>
+    <div id="welcomeback">
+        <img draggable="false" class="logo" src="images/ReelRoute White.svg">
+        <div class="textbox">
+            <h2 class="info">Welcome Back</h2>
+            <p class="errsubtitle">You’ve made <> links, and are at <movie>. Let's complete this route.</p>
+            <div class="button" onclick="document.getElementById("welcomeback").style.display = "none";">
+            <h2>CONTINUE</h2>
+            </div>
+        </div>    
+    </div>
+    <div id="completed">
+        <img draggable="false" class="logo" src="images/ReelRoute White.svg">
+        <div class="textbox">
+            <h2 class="info">You've completed today's route</h2>
+            <p class="errsubtitle">Tomorrow's a new day, with a new route See you then.</p>
+            <p class="errsubtitle">Whilst you're here, why not checkout your statistics.</p>
+        </div>    
+    </div>
+    <div id="home">
+        <img draggable="false" class="logo" src="images/ReelRoute White.svg">
+        <div class="textbox">
+            <h2 class="info">Welcome Back</h2>
+            <p class="errsubtitle">You’ve made <> links, and are at <movie>. Let's complete this route.</p>
+            <div class="button" onclick="document.getElementById("welcomeback").style.display = "none";">
+            <h2>CONTINUE</h2>
+            </div>
         </div>    
     </div>
     <div id="statistics">
