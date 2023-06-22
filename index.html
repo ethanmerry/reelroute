@@ -35,7 +35,7 @@
         
         fetch('https://api.themoviedb.org/3/authentication', options)
           .then(response => response.json())
-          .then(response => 
+          .then(response => {
                 document.getElementById("overlay").style.display = "none";
                 var done = localStorage.getItem('completed');
                 var day = localStorage.getItem("startTime");
