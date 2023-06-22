@@ -40,7 +40,7 @@
                 var done = localStorage.getItem('completed');
                 var day = localStorage.getItem("startTime");
                 var nowdate = new Date()
-                if (day!=nowdate || s_null(day)=true) {
+                if (day!=nowdate || day===null) {
                     done=false;
                     document.getElementById("home").style.display = "block";
                     localStorage.setItem('startTime', nowdate);
