@@ -1,3 +1,7 @@
+body {
+    background: #000000;
+}
+
 .sidebar {
     position: fixed;
     width: 282px;
