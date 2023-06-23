@@ -259,13 +259,11 @@
                           .then(response => {
                               status = response.status;
                               runtime = response.runtime;
-                              console.log(credit.media_type);
                               console.log(credit.poster_path);
                               console.log(response.status);
                               console.log(credit.genre_ids);
                               console.log(response.runtime);
                               if (
-                                    credit.media_type === 'movie' &&  // Only movies
                                     credit.poster_path &&  // Must have a poster path
                                     status === 'Released' &&  // Must have a release date
                                     !credit.genre_ids.includes(99) &&  // Genre ID for "Documentary"
