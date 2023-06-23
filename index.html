@@ -250,24 +250,15 @@
                                 Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMzU5ZWVlODE4NzMwYTBmMDExYTA3YjdlNmU3MzM3NSIsInN1YiI6IjY0ODc1OTIxYzAzNDhiMDBhZWQ1Nzc3YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qtny7zLA5JZuo2moI3UYBzi4grqAjwK5NMCyn85zO3U'
                             }
                         };
-                        
-                        var status;
-                        var runtime;
                             
-                        fetch('https://api.themoviedb.org/3/movie/298618?language=en-US', apitype)
+                        fetch('https://api.themoviedb.org/3/movie/'+ newmovieid +'?language=en-US', apitype)
                           .then(response => response.json())
                           .then(response => {
-                              status = response.status;
-                              runtime = response.runtime;
-                              console.log(credit.poster_path);
-                              console.log(response.status);
-                              console.log(credit.genre_ids);
-                              console.log(response.runtime);
                               if (
                                     credit.poster_path &&  // Must have a poster path
-                                    status === 'Released' &&  // Must have a release date
+                                    response.status === 'Released' &&  // Must have a release date
                                     !credit.genre_ids.includes(99) &&  // Genre ID for "Documentary"
-                                    runtime && runtime > 60  // Duration is above 1 hour (60 minutes)
+                                    response.runtime && response.runtime > 60  // Duration is above 1 hour (60 minutes)
                                 ) {
                                         console.log("in the if");
                                         const image = `https://image.tmdb.org/t/p/w200${credit.poster_path}`;
