@@ -6,25 +6,6 @@
     <meta name="theme-color" content="#000000">
     <title id="pageTitle">ReelRoute - Find the route between your favourite movies.</title>
     <script>
-        fetch('files/startingMovie.json')
-          .then(response => response.json())
-          .then(startingMovieData => {
-            const startingFilmName = startingMovieData.title;
-            return fetch('files/endMovie.json')
-              .then(response => response.json())
-              .then(endMovieData => {
-                const endingFilmName = endMovieData.title;
-                const pageTitle = `${startingFilmName} to ${endingFilmName} - ReelRoute`;
-                document.title = pageTitle;
-              })
-              .catch(error => {
-                console.error('Error reading endMovie.json:', error);
-              });
-          })
-          .catch(error => {
-            console.error('Error reading startingMovie.json:', error);
-          });
-        
         const options = {
           method: 'GET',
           headers: {
@@ -36,6 +17,24 @@
         fetch('https://api.themoviedb.org/3/authentication', options)
           .then(response => response.json())
           .then(response => {
+                fetch('files/startingMovie.json')
+                  .then(response => response.json())
+                  .then(startingMovieData => {
+                    const startingFilmName = startingMovieData.title;
+                    return fetch('files/endMovie.json')
+                      .then(response => response.json())
+                      .then(endMovieData => {
+                        const endingFilmName = endMovieData.title;
+                        const pageTitle = `${startingFilmName} to ${endingFilmName} - ReelRoute`;
+                        document.title = pageTitle;
+                      })
+                      .catch(error => {
+                        console.error('Error reading endMovie.json:', error);
+                      });
+                  })
+                  .catch(error => {
+                    console.error('Error reading startingMovie.json:', error);
+                  });
                 var done = localStorage.getItem('completed');
                 var day = localStorage.getItem("startTime");
                 var nowdate = new Date()
@@ -260,26 +259,26 @@
                           .then(response => {
                               status = response.status;
                               runtime = response.runtime;
+                              console.log(credit.media_type);
+                              console.log(credit.poster_path);
+                              console.log(response.status);
+                              console.log(credit.genre_ids);
+                              console.log(response.runtime);
+                              if (
+                                    credit.media_type === 'movie' &&  // Only movies
+                                    credit.poster_path &&  // Must have a poster path
+                                    status === 'Released' &&  // Must have a release date
+                                    !credit.genre_ids.includes(99) &&  // Genre ID for "Documentary"
+                                    runtime && runtime > 60  // Duration is above 1 hour (60 minutes)
+                                ) {
+                                        console.log("in the if");
+                                        const image = `https://image.tmdb.org/t/p/w200${credit.poster_path}`;
+                                        const name = credit.title;
+                                        const entityid = credit.id;
+                                        createImageWithText(containerElement, image, name, entityid);
+                                }
                           })
                           .catch(err => console.error(err));
-                        console.log(credit.media_type);
-                        console.log(credit.poster_path);
-                        console.log(response.status);
-                        console.log(credit.genre_ids);
-                        console.log(response.runtime);
-                        if (
-                            credit.media_type === 'movie' &&  // Only movies
-                            credit.poster_path &&  // Must have a poster path
-                            status === 'Released' &&  // Must have a release date
-                           // !credit.genre_ids.includes(99) &&  // Genre ID for "Documentary"
-                            runtime && runtime > 60  // Duration is above 1 hour (60 minutes)
-                        ) {
-                                console.log("in the if");
-                                const image = `https://image.tmdb.org/t/p/w200${credit.poster_path}`;
-                                const name = credit.title;
-                                const entityid = credit.id;
-                                createImageWithText(containerElement, image, name, entityid);
-                        }
                         });
                     } else {
                         console.log('Invalid type');
