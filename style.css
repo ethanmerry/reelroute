@@ -21,6 +21,7 @@ body {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    padding: 10px;
 }
 
 .errlogo {
@@ -36,6 +37,7 @@ body {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    padding: 10px;
     
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     border-radius: 8px;
@@ -56,14 +58,6 @@ body {
     height: 30px;
     left: 10px;
     bottom: 10px;
-}
-
-.linktime {
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    width: 282px;
-    height: 55%;
 }
 
 .subtitle {
@@ -93,7 +87,7 @@ body {
     font-weight: 700;
     font-size: 48px;
     line-height: 0%;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
     text-align: center;
 
     color: #FFFFFF;
@@ -116,7 +110,7 @@ body {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 10px; 
+    padding-top: 7px; 
     padding-bottom: 20px; 
 }
 
@@ -126,6 +120,7 @@ body {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    
     background: rgba(255, 255, 255, 0.12);
     box-shadow: 0px 4px 52px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(25px);
@@ -259,14 +254,6 @@ body {
         top: 150px;
         height: calc(100% - 150px);
         width: 100%;
-    }
-    
-    .linktime {
-        position: absolute;
-        top: 0%;
-        left: 0px;
-        width: 100%;
-        height: 200px;
     }
     
     .subtitle {
