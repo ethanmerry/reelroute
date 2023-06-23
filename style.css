@@ -244,7 +244,8 @@ body {
     
     .poster {
         position: absolute;
-        height: 87px;
+        height: 135px;
+        width: 88px
         display: block;
         margin-left: auto;
         margin-right: auto;
@@ -317,7 +318,7 @@ body {
     
     .boxbg {
         width: 240px;
-        height: 45px;
+        height: auto;
         background: rgba(255, 255, 255, 0.12);
         box-shadow: 0px 4px 52px rgba(0, 0, 0, 0.25);
         backdrop-filter: blur(25px);
