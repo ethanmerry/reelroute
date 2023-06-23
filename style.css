@@ -243,12 +243,10 @@ body {
     }
     
     .poster {
-        position: absolute;
-        height: 135px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        bottom: 5px;
+        display: block; /* Ensure the image is treated as a block element */
+        margin-left: auto; /* Center the image horizontally */
+        margin-right: auto; /* Center the image horizontally */
+        max-width: 100%; /* Ensure the image doesn't exceed its container */
         
         filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
         border-radius: 8px;
