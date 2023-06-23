@@ -370,7 +370,7 @@ body {
     
     .image {
         border-radius: 18px 18px 18px 18px;
-        max-width: 135px;
+        max-width: 120px;
         cursor: pointer;
     }    
 }
