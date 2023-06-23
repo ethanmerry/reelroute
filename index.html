@@ -260,7 +260,6 @@
                                     !credit.genre_ids.includes(99) &&  // Genre ID for "Documentary"
                                     response.runtime && response.runtime > 60  // Duration is above 1 hour (60 minutes)
                                 ) {
-                                        console.log("in the if");
                                         const image = `https://image.tmdb.org/t/p/w200${credit.poster_path}`;
                                         const name = credit.title;
                                         const entityid = credit.id;
@@ -369,7 +368,6 @@
                 <script>
                     // Retrieve the movie ID from session storage
                     const movieID = localStorage.getItem('endID');
-                    console.log(movieID);
                     
                     const typeofapi = {
                       method: 'GET',
@@ -390,7 +388,6 @@
                         const logoElement = document.getElementById("tologo");
                         if (logoURL) {
                           logoElement.src = logoURL;
-                          console.log(logoURL);
 
                         } else {
                           logoElement.alt = "Film logo not found.";
