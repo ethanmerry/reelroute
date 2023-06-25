@@ -165,6 +165,7 @@ body {
     line-height: 15px;
     color: #FFFFFF;
     width: 165px;
+    margin: 0 auto;
     overflow-wrap: break-word;
 }
 
@@ -349,6 +350,7 @@ body {
         line-height: 15px;
         color: #FFFFFF;
         width: 135px;
+        margin: 0 auto;
         overflow-wrap: break-word;
     }
     
