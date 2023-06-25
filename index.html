@@ -421,7 +421,7 @@
 
                     function updateTimer() {
                         var seconds = localStorage.getItem('seconds');
-                        seconds = seconds + 1;
+                        seconds = +seconds + 1;
                         localStorage.setItem('seconds',seconds);
 
                         var minutes = Math.floor(seconds / 60);
