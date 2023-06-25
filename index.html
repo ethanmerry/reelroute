@@ -39,6 +39,7 @@
                 var day = localStorage.getItem("startTime");
                 var nowdate = new Date()
                 if (day!=nowdate || day===null) {
+                    localStorage.setItem('seconds',0);
                     done=false;
                     document.getElementById("home").style.display = "block";
                     localStorage.setItem('startTime', nowdate);
@@ -415,31 +416,19 @@
                 <h2 class="subtitle">TIME</h2>
                 <h3 id="time" class="info">00:00</h3>
                 <script>
-                    // Get the element to display the timer
-                    const timerElement = document.getElementById('time');
-
-                    // Set the start time
-                    let startTime = new Date().getTime();
-
-                    // Update the timer every second
                     setInterval(updateTimer, 1000);
 
                     function updateTimer() {
-                        // Get the current time
-                        let currentTime = new Date().getTime();
+                        var seconds = localStorage.getItem('seconds');
+                        seconds = seconds + 1;
+                        localStorage.setItem('seconds',seconds);
 
-                        // Calculate the elapsed time in milliseconds
-                        let elapsedTime = currentTime - startTime;
-
-                        // Calculate minutes and seconds
-                        let minutes = Math.floor(elapsedTime / 60000);
-                        let seconds = Math.floor((elapsedTime % 60000) / 1000);
-
-                        // Format the minutes and seconds as "00" if they are single-digit
-                        let formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
-                        let formattedSeconds = seconds < 10 ? '0' + seconds : seconds;
-
-                        // Update the timer element with the formatted time
+                        var minutes = Math.floor(seconds / 60);
+                        var remainingSeconds = seconds % 60;
+                        
+                        var formattedMinutes = ('0' + minutes).slice(-2);
+                        var formattedSeconds = ('0' + remainingSeconds).slice(-2);
+                        
                         timerElement.textContent = formattedMinutes + ':' + formattedSeconds;
                     }
                 </script>
