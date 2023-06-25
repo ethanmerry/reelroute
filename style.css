@@ -164,7 +164,7 @@ body {
     font-size: 12px;
     line-height: 15px;
     color: #FFFFFF;
-    max-width: 165px;
+    width: 165px;
     overflow-wrap: break-word;
 }
 
@@ -348,7 +348,7 @@ body {
         font-size: 10px;
         line-height: 15px;
         color: #FFFFFF;
-        width: 135px; /* Adjust the width as needed */
+        width: 135px;
         overflow-wrap: break-word;
     }
     
