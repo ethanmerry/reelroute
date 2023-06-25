@@ -164,6 +164,7 @@ body {
     font-size: 12px;
     line-height: 15px;
     color: #FFFFFF;
+    overflow-wrap: break-word;
 }
 
 .image {
@@ -346,6 +347,7 @@ body {
         font-size: 10px;
         line-height: 15px;
         color: #FFFFFF;
+        overflow-wrap: break-word;
     }
     
     .image {
