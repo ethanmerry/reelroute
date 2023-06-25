@@ -289,8 +289,10 @@
     <div class="sidebar">
         <img draggable="false" class="logo" src="images/ReelRoute White.svg">
         <img draggable="false" id="poster" class="poster" src="" alt="film poster">
+        <p id="postercaption" class="caption"></p>
         <script>
             function getPosterOrHeadshot(type, id) {
+              const posterElement = document.getElementById("poster");
               const apiKey = "3359eee818730a0f011a07b7e6e73375"; // Replace with your TMDb API key
               const baseUrl = "https://api.themoviedb.org/3";
             
@@ -303,7 +305,7 @@
                     const posterPath = movieData.poster_path;
                     if (posterPath) {
                       const posterUrl = `https://image.tmdb.org/t/p/w500/${posterPath}`;
-                      return posterUrl;
+                      posterElement.src = posterUrl;
                     }
                     return null;
                   });
@@ -316,7 +318,7 @@
                     const profilePath = castData.profile_path;
                     if (profilePath) {
                       const posterUrl = `https://image.tmdb.org/t/p/w500/${profilePath}`;
-                      return posterUrl;
+                      posterElement.src = posterUrl;
                     }
                     return null;
                   });
@@ -329,14 +331,6 @@
                 const currentid = localStorage.getItem('id');
                 const idtype = localStorage.getItem('type')
                 getPosterOrHeadshot(idtype, currentid)
-                  .then(posterUrl => {
-                    const posterElement = document.getElementById("poster");
-                    if (posterUrl) {
-                      posterElement.src = posterUrl;
-                    } else {
-                      posterElement.alt = "Film poster not found.";
-                    }
-                  });
             };
             updateposter();
         </script>
@@ -347,8 +341,7 @@
                         fetch('files/startingMovie.json')
                             .then(response => response.json())
                             .then(data => {
-                                const idValue = data.id;
-                                localStorage.setItem('id', idValue);
+                                localStorage.setItem('id', data.id);
                                 localStorage.setItem('type','movie');
 
                             })
