@@ -37,12 +37,13 @@
                   });
                 var done = localStorage.getItem('completed');
                 var day = localStorage.getItem("startTime");
-                var nowdate = new Date()
-                if (day!=nowdate || day===null) {
+                var nowdate = new Date();
+                var formattedDate = nowdate.toLocaleDateString();
+                if (day!=formattedDate || day===null) {
                     localStorage.setItem('seconds',0);
                     done=false;
                     document.getElementById("home").style.display = "block";
-                    localStorage.setItem('startTime', nowdate);
+                    localStorage.setItem('startTime', formattedDate);
                 
                     localStorage.setItem('links', 0);
                     fetch('files/startingMovie.json')
