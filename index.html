@@ -417,6 +417,8 @@
                 <h2 class="subtitle">TIME</h2>
                 <h3 id="time" class="info">00:00</h3>
                 <script>
+                    const timerElement = document.getElementById('time');
+                    
                     setInterval(updateTimer, 1000);
 
                     function updateTimer() {
