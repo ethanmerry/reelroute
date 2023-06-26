@@ -321,9 +321,15 @@
         </div>
     </div>
     <div class="sidebar">
-        <img draggable="false" class="howto" onclick="returntostart()" style="cursor: pointer" src="images/How to play.svg">
+        <img draggable="false" class="howto" onclick="howtoplay()" style="cursor: pointer" src="images/icons/How to Play.svg">
         <img draggable="false" class="pause" onclick="pausegame()" style="cursor: pointer"src="images/Pause.svg">
         <script>
+            function howtoplay() {
+                document.getElementById("howtoplay").style.display = "block";
+                localStorage.setItem('paused',true);
+                document.title = "How to Play - ReelRoute";
+            }
+            
             function pausegame() {
                 document.getElementById("paused").style.display = "block";
                 localStorage.setItem('paused',true);
