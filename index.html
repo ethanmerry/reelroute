@@ -93,17 +93,17 @@
             <p class="errsubtitle">Whilst you're here, why not take a look at how to play ReelRoute, so when you get around to playing you are a master at the art of film navigation.</p>
         </div>    
     </div>
-    <div id="welcomeback">
+    <div id="paused">
         <img draggable="false" class="logo" src="images/ReelRoute White.svg">
         <div class="textbox">
-            <h2 class="info">Welcome Back</h2>
+            <h2 class="info">Game Paused</h2>
             <p class="errsubtitle">You’ve made <> links, and are at <movie>. Let's complete this route.</p>
-            <div class="button" onclick="welcomeback()">
+            <div class="button" onclick="Unpause()">
               <h2>CONTINUE</h2>
             </div>
             <script>
-                function welcomeback() {
-                    document.getElementById("welcomeback").style.display = "none";
+                function Unpause() {
+                    document.getElementById("paused").style.display = "none";
                     localStorage.setItem('paused',false);
                 }
             </script>
@@ -205,26 +205,28 @@
                     });
                     wrapperElement.appendChild(imageElement);
                     imageElement.addEventListener('click', () => {
-                        localStorage.setItem('id',entityid);
-                        let numlinks = localStorage.getItem('links');
-                        let updatedValue = +numlinks + 1;
-                        localStorage.setItem('links',updatedValue);
-                        const currentType = localStorage.getItem('type');
-                        if (currentType == 'movie') {
-                            localStorage.setItem('type','cast');
-                        } else {
-                            localStorage.setItem('type','movie');
+                        var paused = localStorage.getItem('paused');
+                        if (paused===false) {
+                            localStorage.setItem('id',entityid);
+                            let numlinks = localStorage.getItem('links');
+                            let updatedValue = +numlinks + 1;
+                            localStorage.setItem('links',updatedValue);
+                            const currentType = localStorage.getItem('type');
+                            if (currentType == 'movie') {
+                                localStorage.setItem('type','cast');
+                            } else {
+                                localStorage.setItem('type','movie');
+                            }
+    
+                            window.updatelinks();
+                            window.updateposter();
+                            
+                            const list = document.getElementById("container");
+                            while (list.hasChildNodes()) {
+                              list.removeChild(list.firstChild);
+                            }                     
+                            updatecredits()
                         }
-
-                        window.updatelinks();
-                        window.updateposter();
-                        
-                        const list = document.getElementById("container");
-                        while (list.hasChildNodes()) {
-                          list.removeChild(list.firstChild);
-                        }                     
-                        updatecredits()
-                        
                         endmovieid = localStorage.getItem('endID');
                         if (entityid == endmovieid) {
                             localStorage.setItem('paused',true);
@@ -301,6 +303,8 @@
         </div>
     </div>
     <div class="sidebar">
+        <img draggable="false" class="howto" src="images/How to play.svg">
+        <img draggable="false" class="pause" src="images/Pause.svg">
         <img draggable="false" class="logo" src="images/ReelRoute White.svg">
         <img draggable="false" id="poster" class="poster" src="" alt="film poster">
         <p id="postercaption" class="caption"></p>
@@ -352,22 +356,25 @@
                 <h3 class="returnstart">RETURN TO START</h3>
                 <script>
                     function returntostart() {
-                        fetch('files/startingMovie.json')
-                            .then(response => response.json())
-                            .then(data => {
-                                localStorage.setItem('id', data.id);
-                                localStorage.setItem('type','movie');
-
-                            })
-                            .catch(error => {
-                                console.log('Error:', error);
-                            });
-                        window.updateposter();
-                        const list = document.getElementById("container");
-                        while (list.hasChildNodes()) {
-                          list.removeChild(list.firstChild);
-                        }                     
-                        window.updatecredits()
+                        var paused = localStorage.getItem('paused');
+                        if (paused===false) {
+                            fetch('files/startingMovie.json')
+                                .then(response => response.json())
+                                .then(data => {
+                                    localStorage.setItem('id', data.id);
+                                    localStorage.setItem('type','movie');
+    
+                                })
+                                .catch(error => {
+                                    console.log('Error:', error);
+                                });
+                            window.updateposter();
+                            const list = document.getElementById("container");
+                            while (list.hasChildNodes()) {
+                              list.removeChild(list.firstChild);
+                            }                     
+                            window.updatecredits()
+                        }
                     };
                 </script>
             </div>
@@ -432,7 +439,7 @@
                         var paused = localStorage.getItem('paused');
                         var seconds = localStorage.getItem('seconds');
 
-                        if (paused=false) {
+                        if (paused===false) {
                             seconds = +seconds + 1;
                             localStorage.setItem('seconds',seconds);
                         }
