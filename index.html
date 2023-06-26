@@ -6,6 +6,24 @@
     <meta name="theme-color" content="#000000">
     <title id="pageTitle">ReelRoute - Find the route between your favourite movies.</title>
     <script>
+        fetch('files/startingMovie.json')
+            .then(response => response.json())
+            .then(startingMovieData => {
+                const startingFilmName = startingMovieData.title;
+                return fetch('files/endMovie.json')
+                    .then(response => response.json())
+                    .then(endMovieData => {
+                        const endingFilmName = endMovieData.title;
+                        const pageTitle = `${startingFilmName} to ${endingFilmName} - ReelRoute`;
+                        localStorage.setItem('title',pageTitle);
+                    })
+                    .catch(error => {
+                        console.error('Error reading endMovie.json:', error);
+                    });
+            })
+            .catch(error => {
+                console.error('Error reading startingMovie.json:', error);
+            });
         localStorage.setItem('paused',true);
         const options = {
           method: 'GET',
@@ -86,6 +104,7 @@
                 function Unpause() {
                     document.getElementById("paused").style.display = "none";
                     localStorage.setItem('paused',false);
+                    document.title = localStorage.getItem('title');
                     fetch('files/startingMovie.json')
                       .then(response => response.json())
                       .then(startingMovieData => {
@@ -133,24 +152,7 @@
                 function home() {
                     document.getElementById("home").style.display = "none";
                     localStorage.setItem('paused',false);
-                    fetch('files/startingMovie.json')
-                      .then(response => response.json())
-                      .then(startingMovieData => {
-                        const startingFilmName = startingMovieData.title;
-                        return fetch('files/endMovie.json')
-                          .then(response => response.json())
-                          .then(endMovieData => {
-                            const endingFilmName = endMovieData.title;
-                            const pageTitle = `${startingFilmName} to ${endingFilmName} - ReelRoute`;
-                            document.title = pageTitle;
-                          })
-                          .catch(error => {
-                            console.error('Error reading endMovie.json:', error);
-                          });
-                      })
-                      .catch(error => {
-                        console.error('Error reading startingMovie.json:', error);
-                      });
+                    document.title = localStorage.getItem('title');
                 }
             </script>
         </div>    
