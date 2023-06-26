@@ -233,7 +233,7 @@
                     imageElement.addEventListener('click', () => {
                         var paused = localStorage.getItem('paused');
                         console.log(paused);
-                        if (Boolean(paused) === false) {
+                        if (Boolean(paused) == false) {
                             localStorage.setItem('id',entityid);
                             console.log('in cause paused is false');
                             let numlinks = localStorage.getItem('links');
