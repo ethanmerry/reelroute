@@ -117,12 +117,18 @@
         </div>    
     </div>
     <div id="home">
-        <img draggable="false" class="logo" src="images/ReelRoute White.svg">
-        <div class="textbox">
-            <h2 class="info">Welcome Back</h2>
-            <p class="errsubtitle">You’ve made <> links, and are at <movie>. Let's complete this route.</p>
-            <div class="button" onclick="home()">
-                <h2>CONTINUE</h2>
+        <a href="statistics.html"> <img draggable="false" src="images/icons/Statistics.svg" class="statistics" alt="Statistics icon"> </a>
+        <a href="howtoplay.html"> <img draggable="false" src="images/icons/How to Play.svg" class="howto" alt="How to play icon"> </a>
+        <img draggable="false" src="images/ReelRoute White.svg" class="logo" alt="ReelRoute logo">
+        <h2 class="slogan">Find the route between your favourite movies.</h2>
+        <div class="container">
+            <div class="todayroutecontainer">
+                <h2 class="fronttext">TODAY'S ROUTE</h2>   
+            </div>
+            <img draggable="false" id="starting" src="" alt="film logo">
+            <img draggable="false" id="ending" src="" alt="film logo">
+            <div class="playbox" onlick="home()">
+                <h2 class="playtext">PLAY</h2>
             </div>
             <script>
                 function home() {
