@@ -6,6 +6,7 @@
     <meta name="theme-color" content="#000000">
     <title id="pageTitle">ReelRoute - Find the route between your favourite movies.</title>
     <script>
+        localStorage.setItem('paused',true);
         const options = {
           method: 'GET',
           headers: {
@@ -88,7 +89,7 @@
         <img draggable="false" class="errlogo" src="images/ReelRoute White.svg">
         <div class="textbox">
             <h2 class="info">Oops! Hold on tight!</h2>
-            <p class="errsubtitle">Sadly, the Force wasn't on our side when it came to obtaining our movie reels. It seems that our connection to our movies have been disrupted, making it unable for you to play right now. You can try overcoming this disturbance by refreshing the page or ensuring a strong network connection.</p>
+            <p class="errsubtitle">It seems that the connection to our movies have been disrupted, making it unable for you to play right now. You can try overcoming this disturbance by refreshing the page or ensuring a strong network connection.</p>
             <p class="errsubtitle">Whilst you're here, why not take a look at how to play ReelRoute, so when you get around to playing you are a master at the art of film navigation.</p>
         </div>    
     </div>
@@ -97,9 +98,15 @@
         <div class="textbox">
             <h2 class="info">Welcome Back</h2>
             <p class="errsubtitle">You’ve made <> links, and are at <movie>. Let's complete this route.</p>
-            <div class="button" onclick="document.getElementById("welcomeback").style.display = "none";">
-            <h2>CONTINUE</h2>
+            <div class="button" onclick="welcomeback()">
+              <h2>CONTINUE</h2>
             </div>
+            <script>
+                function welcomeback() {
+                    document.getElementById("welcomeback").style.display = "none";
+                    localStorage.setItem('paused',false);
+                }
+            </script>
         </div>    
     </div>
     <div id="completed">
@@ -107,7 +114,7 @@
         <div class="textbox">
             <h2 class="info">You've completed today's route</h2>
             <p class="errsubtitle">Tomorrow's a new day, with a new route See you then.</p>
-            <p class="errsubtitle">Whilst you're here, why not checkout your statistics.</p>
+            <p class="errsubtitle">Whilst you're here, why not check out your statistics.</p>
         </div>    
     </div>
     <div id="home">
@@ -115,9 +122,15 @@
         <div class="textbox">
             <h2 class="info">Welcome Back</h2>
             <p class="errsubtitle">You’ve made <> links, and are at <movie>. Let's complete this route.</p>
-            <div class="button" onclick="document.getElementById("welcomeback").style.display = "none";">
-            <h2>CONTINUE</h2>
+            <div class="button" onclick="home()">
+                <h2>CONTINUE</h2>
             </div>
+            <script>
+                function home() {
+                    document.getElementById("home").style.display = "none";
+                    localStorage.setItem('paused',false);
+                }
+            </script>
         </div>    
     </div>
     <div id="statistics">
@@ -214,6 +227,7 @@
                         
                         endmovieid = localStorage.getItem('endID');
                         if (entityid == endmovieid) {
+                            localStorage.setItem('paused',true);
                             document.getElementById("statistics").style.display = "block";
                         }
 
@@ -415,9 +429,13 @@
                     setInterval(updateTimer, 1000);
 
                     function updateTimer() {
+                        var paused = localStorage.getItem('paused');
                         var seconds = localStorage.getItem('seconds');
-                        seconds = +seconds + 1;
-                        localStorage.setItem('seconds',seconds);
+
+                        if (paused=false) {
+                            seconds = +seconds + 1;
+                            localStorage.setItem('seconds',seconds);
+                        }
 
                         var minutes = Math.floor(seconds / 60);
                         var remainingSeconds = seconds % 60;
