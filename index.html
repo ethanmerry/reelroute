@@ -232,8 +232,10 @@
                     wrapperElement.appendChild(imageElement);
                     imageElement.addEventListener('click', () => {
                         var paused = localStorage.getItem('paused');
-                        if (paused===false) {
+                        console.log(paused);
+                        if (paused === false) {
                             localStorage.setItem('id',entityid);
+                            console.log('in cause paused is false');
                             let numlinks = localStorage.getItem('links');
                             let updatedValue = +numlinks + 1;
                             localStorage.setItem('links',updatedValue);
