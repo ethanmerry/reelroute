@@ -153,6 +153,8 @@
                     document.getElementById("home").style.display = "none";
                     localStorage.setItem('paused',false);
                     document.title = localStorage.getItem('title');
+                    window.updateposter();
+                    window.updatecredits();
                 }
             </script>
         </div>    
@@ -323,7 +325,6 @@
                     // Call the function to fetch and handle the data based on the type and id
                     fetchDataByType(type, id);
                 };
-                updatecredits();
             </script>
         </div>
     </div>
@@ -388,7 +389,6 @@
                 const idtype = localStorage.getItem('type')
                 getPosterOrHeadshot(idtype, currentid)
             };
-            updateposter();
         </script>
             <div class="boxbg" onclick="returntostart()" style="cursor: pointer">
                 <h3 class="returnstart">RETURN TO START</h3>
