@@ -232,6 +232,133 @@ body {
   z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
 }
 
+.homelogo {
+    position: absolute;
+    width: 307px;
+    height: 75px;
+    left: calc(50% - 307px/2 - 0.5px);
+    top: 131px;
+}
+
+.slogan {
+    position: absolute;
+    width: 551px;
+    height: 29px;
+    left: calc(50% - 551px/2 - 0.5px);
+    top: 241px;
+    
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29px;
+
+    color: #FFFFFF;
+}
+
+.homestatistics {
+    position: absolute;
+    width: 55px;
+    height: 41px;
+    left: 18px;
+    top: 16px;
+}
+
+.homehowto {
+    position: absolute;
+    width: 41px;
+    height: 41px;
+    left: 87px;
+    top: 16px;
+}
+
+.container {
+    position: absolute;
+    width: 659px;
+    height: 381px;
+    left: calc(50% - 659px/2 - 16.5px);
+    top: 400px;
+    
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0px 4px 52px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(25px);
+    /* Note: backdrop-filter has minimal browser support */
+    
+    border-radius: 18px 18px 26px 26px;
+}
+.todayroutecontainer {
+    position: absolute;
+    width: 659px;
+    height: 37px;
+    left: 0px;
+    top: 0px;
+
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0px 4px 52px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(25px);
+
+    border-radius: 26px;
+}
+
+.playbox {
+    position: absolute;
+    width: 659px;
+    height: 94px;
+    left: 0px;
+    bottom: 0px;
+    
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0px 4px 52px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(25px);
+    /* Note: backdrop-filter has minimal browser support */
+    
+    border-radius: 26px;
+}
+
+.fronttext {
+    position: absolute;
+    top: -9px;
+    left: 250px;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    
+    color: #FFFFFF;
+}
+
+.playtext {
+    position: absolute;
+    height: 94px;
+    top: -30px;
+    left: 255px;
+    
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 55px;
+    line-height: 67px;
+    
+    color: #FFFFFF;
+}
+
+#starting {
+    position: absolute;
+    width: 144px;
+    left: 100px;
+}
+
+#ending {
+    position: absolute;
+    width: 144px;
+    left: 100px;
+}
+
 @media only screen and (max-width: 715px) {
     .sidebar {
         position: fixed;
