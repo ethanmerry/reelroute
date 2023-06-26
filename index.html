@@ -231,37 +231,26 @@
                     });
                     wrapperElement.appendChild(imageElement);
                     imageElement.addEventListener('click', () => {
-                        var paused = localStorage.getItem('paused');
-                        var isPaused = Boolean(paused);
-                        console.log(isPaused);
-                        console.log(paused===false);
-                        console.log(paused==false);
-                        console.log(paused=false);
-                        console.log(paused!=true);
-
-                        if (isPaused === false) {
-                            console.log('whole world mine');
-                            localStorage.setItem('id',entityid);
-                            console.log('in cause paused is false');
-                            let numlinks = localStorage.getItem('links');
-                            let updatedValue = +numlinks + 1;
-                            localStorage.setItem('links',updatedValue);
-                            const currentType = localStorage.getItem('type');
-                            if (currentType == 'movie') {
-                                localStorage.setItem('type','cast');
-                            } else {
-                                localStorage.setItem('type','movie');
-                            }
-    
-                            window.updatelinks();
-                            window.updateposter();
-                            
-                            const list = document.getElementById("container");
-                            while (list.hasChildNodes()) {
-                              list.removeChild(list.firstChild);
-                            }                     
-                            updatecredits()
+                        localStorage.setItem('id',entityid);
+                        let numlinks = localStorage.getItem('links');
+                        let updatedValue = +numlinks + 1;
+                        localStorage.setItem('links',updatedValue);
+                        const currentType = localStorage.getItem('type');
+                        if (currentType == 'movie') {
+                            localStorage.setItem('type','cast');
+                        } else {
+                            localStorage.setItem('type','movie');
                         }
+                        
+                        window.updatelinks();
+                        window.updateposter();
+                            
+                        const list = document.getElementById("container");
+                        while (list.hasChildNodes()) {
+                            list.removeChild(list.firstChild);
+                        }                     
+                        updatecredits()
+                            
                         endmovieid = localStorage.getItem('endID');
                         if (entityid == endmovieid) {
                             localStorage.setItem('paused',true);
