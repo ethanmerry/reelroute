@@ -232,13 +232,14 @@
                     wrapperElement.appendChild(imageElement);
                     imageElement.addEventListener('click', () => {
                         var paused = localStorage.getItem('paused');
-                        console.log(boolean(paused));
+                        var isPaused = Boolean(paused);
+                        console.log(isPaused);
                         console.log(paused===false);
                         console.log(paused==false);
                         console.log(paused=false);
                         console.log(paused!=true);
 
-                        if (Boolean(paused) != true) {
+                        if (isPaused === false) {
                             console.log('whole world mine');
                             localStorage.setItem('id',entityid);
                             console.log('in cause paused is false');
