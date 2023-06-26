@@ -23,11 +23,10 @@
                 var nowdate = new Date();
                 var formattedDate = nowdate.toLocaleDateString();
                 if (day!=formattedDate || day===null) {
+                    document.getElementById("home").style.display = "block";
                     localStorage.setItem('seconds',0);
                     done=false;
-                    document.getElementById("home").style.display = "block";
                     localStorage.setItem('startTime', formattedDate);
-                
                     localStorage.setItem('links', 0);
                     fetch('files/startingMovie.json')
                         .then(response => response.json())
