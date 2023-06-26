@@ -221,7 +221,7 @@ body {
 
 #home {
   position: fixed; /* Sit on top of the page content */
-  display: block;
+  display: none;
   width: 100%; /* Full width (cover the whole page) */
   height: 100%; /* Full height (cover the whole page) */
   top: 0;
@@ -375,7 +375,7 @@ body {
 
     #home {
       position: fixed; /* Sit on top of the page content */
-      display: block;
+      display: none;
       width: 100%; /* Full width (cover the whole page) */
       height: 100%; /* Full height (cover the whole page) */
       top: 0;
