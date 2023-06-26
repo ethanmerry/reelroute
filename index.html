@@ -18,24 +18,6 @@
         fetch('https://api.themoviedb.org/3/authentication', options)
           .then(response => response.json())
           .then(response => {
-                fetch('files/startingMovie.json')
-                  .then(response => response.json())
-                  .then(startingMovieData => {
-                    const startingFilmName = startingMovieData.title;
-                    return fetch('files/endMovie.json')
-                      .then(response => response.json())
-                      .then(endMovieData => {
-                        const endingFilmName = endMovieData.title;
-                        const pageTitle = `${startingFilmName} to ${endingFilmName} - ReelRoute`;
-                        document.title = pageTitle;
-                      })
-                      .catch(error => {
-                        console.error('Error reading endMovie.json:', error);
-                      });
-                  })
-                  .catch(error => {
-                    console.error('Error reading startingMovie.json:', error);
-                  });
                 var done = localStorage.getItem('completed');
                 var day = localStorage.getItem("startTime");
                 var nowdate = new Date();
@@ -97,7 +79,7 @@
         <img draggable="false" class="logo" src="images/ReelRoute White.svg">
         <div class="textbox">
             <h2 class="info">Game Paused</h2>
-            <p class="errsubtitle">You’ve made <> links, and are at <movie>. Let's complete this route.</p>
+            <p class="errsubtitle">You’ve made <> links, and are at <movie>. Let's complete this route!</p>
             <div class="button" onclick="Unpause()">
               <h2>CONTINUE</h2>
             </div>
@@ -105,6 +87,24 @@
                 function Unpause() {
                     document.getElementById("paused").style.display = "none";
                     localStorage.setItem('paused',false);
+                    fetch('files/startingMovie.json')
+                      .then(response => response.json())
+                      .then(startingMovieData => {
+                        const startingFilmName = startingMovieData.title;
+                        return fetch('files/endMovie.json')
+                          .then(response => response.json())
+                          .then(endMovieData => {
+                            const endingFilmName = endMovieData.title;
+                            const pageTitle = `${startingFilmName} to ${endingFilmName} - ReelRoute`;
+                            document.title = pageTitle;
+                          })
+                          .catch(error => {
+                            console.error('Error reading endMovie.json:', error);
+                          });
+                      })
+                      .catch(error => {
+                        console.error('Error reading startingMovie.json:', error);
+                      });
                 }
             </script>
         </div>    
@@ -113,8 +113,7 @@
         <img draggable="false" class="logo" src="images/ReelRoute White.svg">
         <div class="textbox">
             <h2 class="info">You've completed today's route</h2>
-            <p class="errsubtitle">Tomorrow's a new day, with a new route See you then.</p>
-            <p class="errsubtitle">Whilst you're here, why not check out your statistics.</p>
+            <p class="errsubtitle">Tomorrow's a new day, with a new route. See you then!</p>
         </div>    
     </div>
     <div id="home">
@@ -129,6 +128,24 @@
                 function home() {
                     document.getElementById("home").style.display = "none";
                     localStorage.setItem('paused',false);
+                    fetch('files/startingMovie.json')
+                      .then(response => response.json())
+                      .then(startingMovieData => {
+                        const startingFilmName = startingMovieData.title;
+                        return fetch('files/endMovie.json')
+                          .then(response => response.json())
+                          .then(endMovieData => {
+                            const endingFilmName = endMovieData.title;
+                            const pageTitle = `${startingFilmName} to ${endingFilmName} - ReelRoute`;
+                            document.title = pageTitle;
+                          })
+                          .catch(error => {
+                            console.error('Error reading endMovie.json:', error);
+                          });
+                      })
+                      .catch(error => {
+                        console.error('Error reading startingMovie.json:', error);
+                      });
                 }
             </script>
         </div>    
@@ -231,6 +248,7 @@
                         if (entityid == endmovieid) {
                             localStorage.setItem('paused',true);
                             document.getElementById("statistics").style.display = "block";
+                            document.title = "Route Complete - ReelRoute";
                         }
 
                     });
@@ -303,8 +321,15 @@
         </div>
     </div>
     <div class="sidebar">
-        <img draggable="false" class="howto" src="images/How to play.svg">
-        <img draggable="false" class="pause" src="images/Pause.svg">
+        <img draggable="false" class="howto" onclick="returntostart()" style="cursor: pointer" src="images/How to play.svg">
+        <img draggable="false" class="pause" onclick="pausegame()" style="cursor: pointer"src="images/Pause.svg">
+        <script>
+            function pausegame() {
+                document.getElementById("paused").style.display = "block";
+                localStorage.setItem('paused',true);
+                document.title = "Game Paused - ReelRoute";
+            }
+        </script>
         <img draggable="false" class="logo" src="images/ReelRoute White.svg">
         <img draggable="false" id="poster" class="poster" src="" alt="film poster">
         <p id="postercaption" class="caption"></p>
