@@ -233,7 +233,12 @@
                     imageElement.addEventListener('click', () => {
                         var paused = localStorage.getItem('paused');
                         console.log(paused);
-                        if (Boolean(paused) == false) {
+                        console.log(paused===false);
+                        console.log(paused==false);
+                        console.log(paused=false);
+                        console.log(paused!=false);
+
+                        if (Boolean(paused) != false) {
                             console.log('whole world mine');
                             localStorage.setItem('id',entityid);
                             console.log('in cause paused is false');
