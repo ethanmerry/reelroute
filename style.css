@@ -313,6 +313,12 @@ body {
     /* Note: backdrop-filter has minimal browser support */
     
     border-radius: 26px;
+    transition: background-color 0.3s ease; /* Add a transition for smooth effect */
+
+}
+
+.playbox:hover {
+  background: white; /* Background color on hover */
 }
 
 .fronttext {
@@ -345,19 +351,24 @@ body {
     line-height: 67px;
     
     color: #FFFFFF;
+    transition: background-color 0.3s ease; /* Add a transition for smooth effect */
+}
+
+.container:hover .playtext {
+    color: linear-gradient(to left, #ff6a00, #ee0979);
 }
 
 #starting {
     position: absolute;
-    top: 129.5px;
-    height: 70px;
+    top: 124.5px;
+    height: 75px;
     left: 35px;
 }
 
 #ending {
     position: absolute;
-    top: 129.5px;
-    height: 70px;
+    top: 124.5px;
+    height: 75px;
     right: 35px;
 }
 
