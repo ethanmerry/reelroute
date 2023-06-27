@@ -355,7 +355,7 @@ body {
 }
 
 .playbox:hover .playtext {
-    color: #F36239;
+    font-size: 62px;
 }
 
 #starting {
