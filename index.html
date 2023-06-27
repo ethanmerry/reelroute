@@ -51,6 +51,37 @@
                         .then(data => {
                             const idValue = data.id;
                             localStorage.setItem('id', idValue);
+                            const movieID = data.id;
+                    
+                            const typeofapi = {
+                              method: 'GET',
+                              headers: {
+                                accept: 'application/json',
+                                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMzU5ZWVlODE4NzMwYTBmMDExYTA3YjdlNmU3MzM3NSIsInN1YiI6IjY0ODc1OTIxYzAzNDhiMDBhZWQ1Nzc3YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qtny7zLA5JZuo2moI3UYBzi4grqAjwK5NMCyn85zO3U'
+                              }
+                            };
+                            fetch('https://api.themoviedb.org/3/movie/'+ movieID +'/images?language=en', typeofapi)
+                              .then(response => response.json())
+                              .then(response => {
+                                const logoPath = response.logos[0].file_path;
+        
+                                // Construct the full URL for the movie logo
+                                const logoURL = `https://image.tmdb.org/t/p/original${logoPath}`;
+                            
+                                // Use the logoURL as needed (e.g., display it in an <img> element)
+                                const logoElement = document.getElementById("starting");
+                                if (logoURL) {
+                                  logoElement.src = logoURL;
+        
+                                } else {
+                                  logoElement.alt = "Film logo not found.";
+                                  console.log("Film logo not found.");
+                                }
+                              })
+                              .catch(error => {
+                                console.error('Error:', error);
+                              });
+
                         })
                         .catch(error => {
                             console.log('Error:', error);
@@ -62,6 +93,37 @@
                         .then(data => {
                             const idValue = data.id;
                             localStorage.setItem('endID', idValue);
+                            const movieID = localStorage.getItem('endID');
+                    
+                            const typeofapi = {
+                              method: 'GET',
+                              headers: {
+                                accept: 'application/json',
+                                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMzU5ZWVlODE4NzMwYTBmMDExYTA3YjdlNmU3MzM3NSIsInN1YiI6IjY0ODc1OTIxYzAzNDhiMDBhZWQ1Nzc3YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qtny7zLA5JZuo2moI3UYBzi4grqAjwK5NMCyn85zO3U'
+                              }
+                            };
+                            fetch('https://api.themoviedb.org/3/movie/'+ movieID +'/images?language=en', typeofapi)
+                              .then(response => response.json())
+                              .then(response => {
+                                const logoPath = response.logos[0].file_path;
+        
+                                // Construct the full URL for the movie logo
+                                const logoURL = `https://image.tmdb.org/t/p/original${logoPath}`;
+                            
+                                // Use the logoURL as needed (e.g., display it in an <img> element)
+                                const logoElement = document.getElementById("ending");
+                                if (logoURL) {
+                                  logoElement.src = logoURL;
+        
+                                } else {
+                                  logoElement.alt = "Film logo not found.";
+                                  console.log("Film logo not found.");
+                                }
+                              })
+                              .catch(error => {
+                                console.error('Error:', error);
+                              });
+
                         })
                         .catch(error => {
                             console.log('Error:', error);
