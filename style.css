@@ -349,14 +349,16 @@ body {
 
 #starting {
     position: absolute;
-    width: 144px;
+    top: 100px;
+    width: 250px;
     left: 100px;
 }
 
 #ending {
     position: absolute;
-    width: 144px;
-    left: 100px;
+    top: 100px;
+    width: 250px;
+    right: 100px;
 }
 
 @media only screen and (max-width: 715px) {
