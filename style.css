@@ -318,7 +318,7 @@ body {
 }
 
 .playbox:hover {
-  background: white; /* Background color on hover */
+    background: rgba(255, 255, 255, 0.30);
 }
 
 .fronttext {
@@ -355,7 +355,7 @@ body {
 }
 
 .container:hover .playtext {
-    color: linear-gradient(to left, #ff6a00, #ee0979);
+    color: #F36239;
 }
 
 #starting {
