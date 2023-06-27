@@ -350,7 +350,7 @@ body {
 #starting {
     position: absolute;
     top: calc(50% - 78px/2);
-    heigh: 78px;
+    height: 78px;
     left: 50px;
 }
 
