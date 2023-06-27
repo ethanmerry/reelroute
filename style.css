@@ -323,9 +323,6 @@ body {
 
 .fronttext {
     position: absolute;
-    top: -9px;
-    left: 250px;
-
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 900;
@@ -338,11 +335,7 @@ body {
 }
 
 .playtext {
-    position: absolute;
-    height: 94px;
-    top: -30px;
-    left: 255px;
-    
+    position: absolute;  
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 900;
