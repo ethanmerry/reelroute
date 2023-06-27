@@ -349,15 +349,15 @@ body {
 
 #starting {
     position: absolute;
-    top: 100px;
-    width: 250px;
+    top: 110;
+    width: 200px;
     left: 100px;
 }
 
 #ending {
     position: absolute;
-    top: 100px;
-    width: 250px;
+    top: 110px;
+    width: 200px;
     right: 100px;
 }
 
