@@ -330,7 +330,6 @@ body {
     font-style: normal;
     font-weight: 900;
     font-size: 20px;
-    line-height: 24px;
     display: flex;
     align-items: center;
     text-align: center;
@@ -348,7 +347,6 @@ body {
     font-style: normal;
     font-weight: 900;
     font-size: 55px;
-    line-height: 67px;
     
     color: #FFFFFF;
     transition: font-size 0.3s ease; /* Add a transition for smooth effect */
