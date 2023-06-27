@@ -154,11 +154,12 @@
             <p class="errsubtitle">Whilst you're here, why not take a look at how to play ReelRoute, so when you get around to playing you are a master at the art of film navigation.</p>
         </div>    
     </div>
-    <div id="paused">
+    <div id="paused" onclick="Unpause()">
         <img draggable="false" class="logo" src="images/ReelRoute White.svg">
         <div class="textbox">
+            <img draggable="false" class="pauselogo" src="images/ReelRoute White.svg">
             <h2 class="info">Game Paused</h2>
-            <p class="errsubtitle">You’ve made <> links, and are at <movie>. Let's complete this route!</p>
+            <p class="errsubtitle">You’ve made <> links, and are at [movie]. Let's complete this route!</p>
             <div class="button" onclick="Unpause()">
               <h2>CONTINUE</h2>
             </div>
@@ -167,24 +168,7 @@
                     document.getElementById("paused").style.display = "none";
                     localStorage.setItem('paused',false);
                     document.title = localStorage.getItem('title');
-                    fetch('files/startingMovie.json')
-                      .then(response => response.json())
-                      .then(startingMovieData => {
-                        const startingFilmName = startingMovieData.title;
-                        return fetch('files/endMovie.json')
-                          .then(response => response.json())
-                          .then(endMovieData => {
-                            const endingFilmName = endMovieData.title;
-                            const pageTitle = `${startingFilmName} to ${endingFilmName} - ReelRoute`;
-                            document.title = pageTitle;
-                          })
-                          .catch(error => {
-                            console.error('Error reading endMovie.json:', error);
-                          });
-                      })
-                      .catch(error => {
-                        console.error('Error reading startingMovie.json:', error);
-                      });
+                    
                 }
             </script>
         </div>    
