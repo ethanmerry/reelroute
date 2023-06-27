@@ -349,16 +349,16 @@ body {
 
 #starting {
     position: absolute;
-    top: 120px;
-    width: 210px;
-    left: 70px;
+    top: calc(50% - 78px/2);
+    heigh: 78px;
+    left: 50px;
 }
 
 #ending {
     position: absolute;
-    top: 120px;
-    width: 210px;
-    right: 70px;
+    top: calc(50% - 78px/2);
+    height: 78px;
+    right: 50px;
 }
 
 @media only screen and (max-width: 715px) {
