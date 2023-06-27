@@ -354,7 +354,7 @@ body {
     transition: background-color 0.3s ease; /* Add a transition for smooth effect */
 }
 
-.container:hover .playtext {
+.playbox:hover .playtext {
     color: #F36239;
 }
 
