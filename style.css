@@ -351,11 +351,11 @@ body {
     line-height: 67px;
     
     color: #FFFFFF;
-    transition: background-color 0.3s ease; /* Add a transition for smooth effect */
+    transition: font-size 0.3s ease; /* Add a transition for smooth effect */
 }
 
 .playbox:hover .playtext {
-    font-size: 62px;
+    font-size: 67px;
 }
 
 #starting {
