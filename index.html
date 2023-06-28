@@ -384,6 +384,9 @@
                     // Check session storage for the "type" and "id" values
                     const type = localStorage.getItem('type');
                     const id = localStorage.getItem('id');
+                    console.log('updatecredits');
+                    console.log(type);
+                    console.log(id);
                     // Call the function to fetch and handle the data based on the type and id
                     fetchDataByType(type, id);
                 };
@@ -449,6 +452,9 @@
             window.updateposter = function() {
                 const currentid = localStorage.getItem('id');
                 const idtype = localStorage.getItem('type');
+                console.log('updateposter');
+                console.log(type);
+                console.log(id);
                 getPosterOrHeadshot(idtype, currentid);
             };
         </script>
@@ -525,7 +531,6 @@
                         var links = localStorage.getItem('links');
                         document.getElementById('linksnum').textContent = links;
                     }
-                    updatelinks()
                 </script>
             </div>
             <div class="boxbg">
