@@ -155,6 +155,7 @@ body {
     flex-grow: 1;
     margin: 10px;
     text-align: center;
+    cursor: pointer;
   }
 
 .caption {
@@ -167,12 +168,20 @@ body {
     width: 165px;
     margin: 0 auto;
     overflow-wrap: break-word;
+    transition: background-color 0.3s ease; /* Add a transition for smooth effect */
+
 }
 
 .image {
     border-radius: 18px 18px 18px 18px;
     max-width: 165px;
-    cursor: pointer;
+}
+
+.image:hover .caption {
+    text-decoration: underline;
+    font-size: 14px;
+    font-weight: 500;
+
 }
 
 #overlay {
@@ -348,10 +357,6 @@ body {
     transition: font-size 0.3s ease; /* Add a transition for smooth effect */
 }
 
-.playbox:hover .playtext {
-    font-size: 67px;
-}
-
 #starting {
     position: absolute;
     top: 124.5px;
@@ -415,7 +420,7 @@ body {
     position: absolute;
     width: 120px;
     left: calc(50% - 120px/2);
-    top: 20px;
+    top: 40px;
 }
 
 .pausetext {
@@ -424,12 +429,25 @@ body {
     font-style: normal;
     font-weight: 900;
     line-height: 60px;
-    font-size: 32px;
+    font-size: 28px;
     text-transform: uppercase;
-    
+    text-align: center;
+    margin-top: -30px;
+
     color: #FFFFFF;
-    transition: font-size 0.3s ease; /* Add a transition for smooth effect */
 }
+
+.pausetitle {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    top: 70px;
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
 
 @media only screen and (max-width: 715px) {
     .sidebar {
