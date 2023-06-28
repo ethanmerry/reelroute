@@ -340,6 +340,7 @@ body {
     font-style: normal;
     font-weight: 900;
     font-size: 55px;
+    text-transform: uppercase;
     
     color: #FFFFFF;
     transition: font-size 0.3s ease; /* Add a transition for smooth effect */
@@ -380,9 +381,42 @@ body {
     background: rgba(20, 20, 20, 0.70);
     box-shadow: 0px 4px 52px 0px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(52.5px);
-    width: 526px;
-    height: 681px;
+    max-width: 520px;
+    height: 600px;
+    left: calc(50% - 526px/2);
     flex-shrink: 0;
+}
+
+.unpausebutton {
+    position: absolute;
+    width: 659px;
+    height: 94px;
+    left: 0px;
+    bottom: 0px;
+    
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0px 4px 52px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(25px);
+    /* Note: backdrop-filter has minimal browser support */
+    
+    border-radius: 26px;
+    transition: background-color 0.3s ease; /* Add a transition for smooth effect */
+}
+
+.pauselogo {
+    width: 150px;
+}
+
+.pausetext {
+    position: absolute;  
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 55px;
+    text-transform: uppercase;
+    
+    color: #FFFFFF;
+    transition: font-size 0.3s ease; /* Add a transition for smooth effect */
 }
 
 @media only screen and (max-width: 715px) {
