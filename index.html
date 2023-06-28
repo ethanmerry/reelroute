@@ -155,7 +155,7 @@
     function handleVisibilityChange() {
       if (document.visibilityState === 'hidden') {
           var isPaused = localStorage.getItem('paused');
-          if (+isPaused==1) {
+          if (+isPaused==0) {
               document.getElementById("paused").style.display = "block";
               document.title="Game Paused - ReelRoute";
               localStorage.setItem('paused',1);
