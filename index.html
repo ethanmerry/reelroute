@@ -44,6 +44,7 @@
                     document.getElementById("home").style.display = "block";
                     localStorage.setItem('seconds',0);
                     done=0;
+                    localStorage.setItem('done',done);
                     localStorage.setItem('startTime', formattedDate);
                     localStorage.setItem('links', 0);
                     fetch('files/startingMovie.json')
