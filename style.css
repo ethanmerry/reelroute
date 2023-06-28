@@ -326,6 +326,7 @@ body {
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 900;
+    line-height: 37px;
     font-size: 20px;
     display: flex;
     align-items: center;
@@ -339,6 +340,7 @@ body {
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 900;
+    line-height: 94px;
     font-size: 55px;
     text-transform: uppercase;
     
@@ -421,6 +423,7 @@ body {
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 900;
+    line-height: 60px;
     font-size: 32px;
     text-transform: uppercase;
     
