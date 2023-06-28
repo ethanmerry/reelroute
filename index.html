@@ -158,7 +158,16 @@
         <div class="pausebox">
             <img draggable="false" class="pauselogo" src="images/ReelRoute White.svg">
             <h2 class="info">Game Paused</h2>
-            <p class="errsubtitle">You’ve made <> links, and are at [movie]. Let's complete this route!</p>
+            <p id="pauseinformation" class="errsubtitle"></p>
+            <script>
+                var links = localStorage.getItem('links');
+                var currentMovieID = localStorage.getItem('id');
+                //code to get the name of the movie from the id.
+                var movieName = 'Asteroid City';
+                var words = "You've made $(links) links, and are at $(movieName). Let's complete this route!"
+                document.getElementById('pauseinformation').type = words;
+                
+            <script>
             <div class="unpausebutton" onclick="Unpause()">
               <h2 class="pausetext">CONTINUE</h2>
             </div>
