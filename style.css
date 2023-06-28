@@ -176,7 +176,6 @@ body {
     width: 165px;
     margin: 0 auto;
     overflow-wrap: break-word;
-    transition: background-color 0.3s ease; /* Add a transition for smooth effect */
 
 }
 
@@ -187,8 +186,7 @@ body {
 
 .image:hover .caption {
     text-decoration: underline;
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 17px;
 
 }
 
