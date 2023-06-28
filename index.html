@@ -285,7 +285,7 @@
                       e.preventDefault();
                     });
                     wrapperElement.appendChild(imageElement);
-                    imageElement.addEventListener('click', () => {
+                    wrapperElement.addEventListener('click', () => {
                         localStorage.setItem('id',entityid);
                         let numlinks = localStorage.getItem('links');
                         let updatedValue = +numlinks + 1;
