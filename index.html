@@ -133,6 +133,7 @@
                     window.updateposter();
                     window.updatecredits();
                     window.updatelogo();
+                    window.updatelinks();
                     document.getElementById("paused").style.display = "block";
                     document.title="Game Paused - ReelRoute";
                 } else {
@@ -150,6 +151,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&family=Poppins:ital,wght@0,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+<script>
+    function handleVisibilityChange() {
+      if (document.visibilityState === 'hidden') {
+          document.getElementById("paused").style.display = "block";
+          document.title="Game Paused - ReelRoute";
+          localStorage.setItem('paused',1);
+      }
+    }
+
+document.addEventListener('visibilitychange', handleVisibilityChange);
+
+</script>
 </head>
 <body>
     <div id="overlay">
