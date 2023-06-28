@@ -186,8 +186,6 @@ body {
 
 .image:hover .caption {
     text-decoration: underline;
-    font-size: 17px;
-
 }
 
 #overlay {
