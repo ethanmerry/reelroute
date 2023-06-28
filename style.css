@@ -52,10 +52,18 @@ body {
 
 .howto {
     position: absolute;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
+    right: 10px;
+    top: 10px;
+}
+
+.pauseicon {
+    position: absolute;
+    width: 25px;
+    height: 25px;
     left: 10px;
-    bottom: 10px;
+    top: 10px;
 }
 
 .subtitle {
