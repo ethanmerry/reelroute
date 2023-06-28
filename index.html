@@ -24,7 +24,7 @@
             .catch(error => {
                 console.error('Error reading startingMovie.json:', error);
             });
-        localStorage.setItem('paused',true);
+        localStorage.setItem('paused',1);
         const options = {
           method: 'GET',
           headers: {
@@ -43,7 +43,7 @@
                 if (day!=formattedDate || day===null) {
                     document.getElementById("home").style.display = "block";
                     localStorage.setItem('seconds',0);
-                    done=false;
+                    done=0;
                     localStorage.setItem('startTime', formattedDate);
                     localStorage.setItem('links', 0);
                     fetch('files/startingMovie.json')
@@ -128,7 +128,7 @@
                         .catch(error => {
                             console.log('Error:', error);
                         });
-                } else if (day == nowdate && done==false){ 
+                } else if (day == nowdate && done==0){ 
                     window.updateposter();
                     window.updatecredits();
                     window.updatelogo();
@@ -180,7 +180,7 @@
             <script>
                 function Unpause() {
                     document.getElementById("paused").style.display = "none";
-                    localStorage.setItem('paused',false);
+                    localStorage.setItem('paused',0);
                     document.title = localStorage.getItem('title');
                     
                 }
@@ -211,7 +211,7 @@
             <script>
                 function home() {
                     document.getElementById("home").style.display = "none";
-                    localStorage.setItem('paused',false);
+                    localStorage.setItem('paused',0);
                     document.title = localStorage.getItem('title');
                     window.updateposter();
                     window.updatelogo();
@@ -292,33 +292,35 @@
                     });
                     wrapperElement.appendChild(imageElement);
                     wrapperElement.addEventListener('click', () => {
-                        localStorage.setItem('id',entityid);
-                        let numlinks = localStorage.getItem('links');
-                        let updatedValue = +numlinks + 1;
-                        localStorage.setItem('links',updatedValue);
-                        const currentType = localStorage.getItem('type');
-                        if (currentType == 'movie') {
-                            localStorage.setItem('type','cast');
-                        } else {
-                            localStorage.setItem('type','movie');
-                        }
-                        
-                        window.updatelinks();
-                        window.updateposter();
+                        var ifPaused = localStorage.getItem('paused');
+                        if (ifPaused==0) {
+                            localStorage.setItem('id',entityid);
+                            let numlinks = localStorage.getItem('links');
+                            let updatedValue = +numlinks + 1;
+                            localStorage.setItem('links',updatedValue);
+                            const currentType = localStorage.getItem('type');
+                            if (currentType == 'movie') {
+                                localStorage.setItem('type','cast');
+                            } else {
+                                localStorage.setItem('type','movie');
+                            }
                             
-                        const list = document.getElementById("container");
-                        while (list.hasChildNodes()) {
-                            list.removeChild(list.firstChild);
-                        }                     
-                        updatecredits()
-                            
-                        endmovieid = localStorage.getItem('endID');
-                        if (entityid == endmovieid) {
-                            localStorage.setItem('paused',true);
-                            document.getElementById("statistics").style.display = "block";
-                            document.title = "Route Complete - ReelRoute";
+                            window.updatelinks();
+                            window.updateposter();
+                                
+                            const list = document.getElementById("container");
+                            while (list.hasChildNodes()) {
+                                list.removeChild(list.firstChild);
+                            }                     
+                            updatecredits()
+                                
+                            endmovieid = localStorage.getItem('endID');
+                            if (entityid == endmovieid) {
+                                localStorage.setItem('paused',1);
+                                document.getElementById("statistics").style.display = "block";
+                                document.title = "Route Complete - ReelRoute";
+                            }
                         }
-
                     });
 
                     const textElement = document.createElement('p');
@@ -393,13 +395,13 @@
         <script>
             function howtoplay() {
                 document.getElementById("howtoplay").style.display = "block";
-                localStorage.setItem('paused',true);
+                localStorage.setItem('paused',1);
                 document.title = "How to Play - ReelRoute";
             }
             
             function pausegame() {
                 document.getElementById("paused").style.display = "block";
-                localStorage.setItem('paused',true);
+                localStorage.setItem('paused',1);
                 document.title = "Game Paused - ReelRoute";
             }
         </script>
@@ -454,7 +456,7 @@
                 <script>
                     function returntostart() {
                         var paused = localStorage.getItem('paused');
-                        if (paused===false) {
+                        if (paused===0) {
                             fetch('files/startingMovie.json')
                                 .then(response => response.json())
                                 .then(data => {
@@ -537,7 +539,7 @@
                         var paused = localStorage.getItem('paused');
                         var seconds = localStorage.getItem('seconds');
 
-                        if (paused===false) {
+                        if (paused===0) {
                             seconds = +seconds + 1;
                             localStorage.setItem('seconds',seconds);
                         }
