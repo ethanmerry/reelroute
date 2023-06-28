@@ -184,10 +184,6 @@ body {
     max-width: 165px;
 }
 
-.image:hover .caption {
-    text-decoration: underline;
-}
-
 #overlay {
   position: fixed; /* Sit on top of the page content */
   display: none; /* Hidden by default */
