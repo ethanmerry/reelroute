@@ -385,7 +385,7 @@
                     const type = localStorage.getItem('type');
                     const id = localStorage.getItem('id');
                     console.log('updatecredits');
-                    console.log(type);
+                    console.log(idtype);
                     console.log(id);
                     // Call the function to fetch and handle the data based on the type and id
                     fetchDataByType(type, id);
@@ -453,7 +453,7 @@
                 const currentid = localStorage.getItem('id');
                 const idtype = localStorage.getItem('type');
                 console.log('updateposter');
-                console.log(type);
+                console.log(idtype);
                 console.log(id);
                 getPosterOrHeadshot(idtype, currentid);
             };
