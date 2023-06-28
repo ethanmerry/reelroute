@@ -154,9 +154,12 @@
 <script>
     function handleVisibilityChange() {
       if (document.visibilityState === 'hidden') {
-          document.getElementById("paused").style.display = "block";
-          document.title="Game Paused - ReelRoute";
-          localStorage.setItem('paused',1);
+          var isPaused = localStorage.getItem('paused');
+          if (+isPaused==1) {
+              document.getElementById("paused").style.display = "block";
+              document.title="Game Paused - ReelRoute";
+              localStorage.setItem('paused',1);
+          }
       }
     }
 
