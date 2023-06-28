@@ -157,13 +157,13 @@
     <div id="paused" onclick="Unpause()">
         <div class="pausebox">
             <img draggable="false" class="pauselogo" src="images/ReelRoute White.svg">
-            <h2 class="info">Game Paused</h2>
-            <p id="pauseinformation" class="errsubtitle"></p>
+            <h2 class="pausetitle">Game Paused</h2>
+            <p id="pauseinformation" class="errsubtitle">When you're ready, press continue to unpause</p>
             <script>
-                var links = localStorage.getItem('links');
+                //var links = localStorage.getItem('links');
                 var currentMovieID = localStorage.getItem('id');
                 //code to get the name of the movie from the id.
-                var links = 3;
+                var links = '3';
                 var movieName = 'Asteroid City';
                 var words = "You've made $(links) links, and are at $(movieName). Let's complete this route!"
                 document.getElementById("pauseinformation").type = words;
