@@ -196,7 +196,12 @@ document.addEventListener('visibilitychange', handleVisibilityChange);
                         fetch(movieUrl)
                           .then(response => response.json())
                           .then(movieData => {
-                            var words = "You've made "+links+" links, and are at "+movieData.title+". Let's complete this route!";
+                            if (+links!=1) {
+                                var s='s';
+                            } else {
+                                var s='';
+                            }
+                            var words = "You've made "+links+" link"+s+", and are at "+movieData.title+". Let's complete this route!";
                             document.getElementById("pauseinformation").textContent = words;
                           });
                     } else if (type === "cast") {
@@ -205,7 +210,12 @@ document.addEventListener('visibilitychange', handleVisibilityChange);
                         fetch(castUrl)
                           .then(response => response.json())
                           .then(castData => {
-                            var words = "You've made "+links+" links, and are at "+castData.name+". Let's complete this route!";
+                            if (+links!=1) {
+                                var s='s';
+                            } else {
+                                var s='';
+                            }
+                            var words = "You've made "+links+" link"+s+", and are at "+castData.name+". Let's complete this route!";
                             document.getElementById("pauseinformation").textContent = words;
                           });
                     }
