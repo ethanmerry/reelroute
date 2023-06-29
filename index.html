@@ -130,6 +130,7 @@
                             console.log('Error:', error);
                         });
                 } else if (day == formattedDate && +done==0) { 
+                    window.updatepausemessage();
                     window.updateposter();
                     window.updatecredits();
                     window.updatelogo();
@@ -156,6 +157,7 @@
       if (document.visibilityState === 'hidden') {
           var isPaused = localStorage.getItem('paused');
           if (+isPaused==0) {
+              window.updatepausemessage();
               document.getElementById("paused").style.display = "block";
               document.title="Game Paused - ReelRoute";
               localStorage.setItem('paused',1);
@@ -182,30 +184,32 @@ document.addEventListener('visibilitychange', handleVisibilityChange);
             <h2 class="pausetitle">Game Paused</h2>
             <p id="pauseinformation" class="errsubtitle">When you're ready, press continue to unpause</p>
             <script>
-                var links = localStorage.getItem('links');
-                var currentMovieID = localStorage.getItem('id');
-                var type = localStorage.getItem('type');
-                const apiKey = "3359eee818730a0f011a07b7e6e73375"; // Replace with your TMDb API key
-                const baseUrl = "https://api.themoviedb.org/3";
-                if (type === "movie") {
-                    // Get movie details
-                    const movieUrl = `${baseUrl}/movie/${currentMovieID}?api_key=${apiKey}`;
-                    fetch(movieUrl)
-                      .then(response => response.json())
-                      .then(movieData => {
-                        var words = "You've made "+links+" links, and are at "+movieData.title+". Let's complete this route!";
-                        document.getElementById("pauseinformation").textContent = words;
-                      });
-                } else if (type === "cast") {
-                    // Get cast details
-                    const castUrl = `${baseUrl}/person/${currentMovieID}?api_key=${apiKey}`;
-                    fetch(castUrl)
-                      .then(response => response.json())
-                      .then(castData => {
-                        var words = "You've made "+links+" links, and are at "+castData.name+". Let's complete this route!";
-                        document.getElementById("pauseinformation").textContent = words;
-                      });
-                }
+                window.updatepausemessage = function() {
+                    var links = localStorage.getItem('links');
+                    var currentMovieID = localStorage.getItem('id');
+                    var type = localStorage.getItem('type');
+                    const apiKey = "3359eee818730a0f011a07b7e6e73375";
+                    const baseUrl = "https://api.themoviedb.org/3";
+                    if (type === "movie") {
+                        // Get movie details
+                        const movieUrl = `${baseUrl}/movie/${currentMovieID}?api_key=${apiKey}`;
+                        fetch(movieUrl)
+                          .then(response => response.json())
+                          .then(movieData => {
+                            var words = "You've made "+links+" links, and are at "+movieData.title+". Let's complete this route!";
+                            document.getElementById("pauseinformation").textContent = words;
+                          });
+                    } else if (type === "cast") {
+                        // Get cast details
+                        const castUrl = `${baseUrl}/person/${currentMovieID}?api_key=${apiKey}`;
+                        fetch(castUrl)
+                          .then(response => response.json())
+                          .then(castData => {
+                            var words = "You've made "+links+" links, and are at "+castData.name+". Let's complete this route!";
+                            document.getElementById("pauseinformation").textContent = words;
+                          });
+                    }
+                };
 
                 
             </script>
@@ -436,6 +440,7 @@ document.addEventListener('visibilitychange', handleVisibilityChange);
             }
             
             function pausegame() {
+                window.updatepausemessage();
                 document.getElementById("paused").style.display = "block";
                 localStorage.setItem('paused',1);
                 document.title = "Game Paused - ReelRoute";
