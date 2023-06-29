@@ -189,7 +189,7 @@ document.addEventListener('visibilitychange', handleVisibilityChange);
                 const baseUrl = "https://api.themoviedb.org/3";
                 if (type === "movie") {
                     // Get movie details
-                    const movieUrl = `${baseUrl}/movie/${currentMovieid}?api_key=${apiKey}`;
+                    const movieUrl = `${baseUrl}/movie/${currentMovieID}?api_key=${apiKey}`;
                     fetch(movieUrl)
                       .then(response => response.json())
                       .then(movieData => {
@@ -198,7 +198,7 @@ document.addEventListener('visibilitychange', handleVisibilityChange);
                       });
                 } else if (type === "cast") {
                     // Get cast details
-                    const castUrl = `${baseUrl}/person/${currentMovieid}?api_key=${apiKey}`;
+                    const castUrl = `${baseUrl}/person/${currentMovieID}?api_key=${apiKey}`;
                     fetch(castUrl)
                       .then(response => response.json())
                       .then(castData => {
