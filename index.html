@@ -190,24 +190,22 @@ document.addEventListener('visibilitychange', handleVisibilityChange);
                 if (type === "movie") {
                     // Get movie details
                     const movieUrl = `${baseUrl}/movie/${currentMovieid}?api_key=${apiKey}`;
-                    return fetch(movieUrl)
+                    fetch(movieUrl)
                       .then(response => response.json())
                       .then(movieData => {
-                        var words = "You've made "+links+" links, and are at "+movieData.name+". Let's complete this route!";
+                        var words = "You've made "+links+" links, and are at "+movieData.title+". Let's complete this route!";
                         document.getElementById("pauseinformation").textContent = words;
-                        return null;
                       });
-                  } else if (type === "cast") {
+                } else if (type === "cast") {
                     // Get cast details
                     const castUrl = `${baseUrl}/person/${currentMovieid}?api_key=${apiKey}`;
-                    return fetch(castUrl)
+                    fetch(castUrl)
                       .then(response => response.json())
                       .then(castData => {
                         var words = "You've made "+links+" links, and are at "+castData.name+". Let's complete this route!";
                         document.getElementById("pauseinformation").textContent = words;
-                        return null;
                       });
-                  }
+                }
 
                 
             </script>
