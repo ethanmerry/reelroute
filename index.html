@@ -182,13 +182,33 @@ document.addEventListener('visibilitychange', handleVisibilityChange);
             <h2 class="pausetitle">Game Paused</h2>
             <p id="pauseinformation" class="errsubtitle">When you're ready, press continue to unpause</p>
             <script>
-                //var links = localStorage.getItem('links');
+                var links = localStorage.getItem('links');
                 var currentMovieID = localStorage.getItem('id');
-                //code to get the name of the movie from the id.
-                var links = '3';
-                var movieName = 'Asteroid City';
-                var words = "You've made "+links+" links, and are at "+movieName+". Let's complete this route!"
-                document.getElementById("pauseinformation").textContent = words;
+                var type = localStorage.getItem('type');
+                const apiKey = "3359eee818730a0f011a07b7e6e73375"; // Replace with your TMDb API key
+                const baseUrl = "https://api.themoviedb.org/3";
+                if (type === "movie") {
+                    // Get movie details
+                    const movieUrl = `${baseUrl}/movie/${currentMovieid}?api_key=${apiKey}`;
+                    return fetch(movieUrl)
+                      .then(response => response.json())
+                      .then(movieData => {
+                        var words = "You've made "+links+" links, and are at "+movieData.name+". Let's complete this route!";
+                        document.getElementById("pauseinformation").textContent = words;
+                        return null;
+                      });
+                  } else if (type === "cast") {
+                    // Get cast details
+                    const castUrl = `${baseUrl}/person/${currentMovieid}?api_key=${apiKey}`;
+                    return fetch(castUrl)
+                      .then(response => response.json())
+                      .then(castData => {
+                        var words = "You've made "+links+" links, and are at "+castData.name+". Let's complete this route!";
+                        document.getElementById("pauseinformation").textContent = words;
+                        return null;
+                      });
+                  }
+
                 
             </script>
             <div class="unpausebutton" onclick="Unpause()">
@@ -425,7 +445,7 @@ document.addEventListener('visibilitychange', handleVisibilityChange);
         </script>
         <img draggable="false" class="logo" src="images/ReelRoute White.svg">
         <img draggable="false" id="poster" class="poster" src="" alt="film poster">
-        <p id="postercaption" class="caption"></p>
+        <p id="postercaption" class="caption">Taylor Swift</p>
         <script>
             function getPosterOrHeadshot(type, id) {
               const posterElement = document.getElementById("poster");
@@ -442,6 +462,7 @@ document.addEventListener('visibilitychange', handleVisibilityChange);
                     if (posterPath) {
                       const posterUrl = `https://image.tmdb.org/t/p/w500/${posterPath}`;
                       posterElement.src = posterUrl;
+                      document.getElementById('postercaption').textContent = movieData.title;
                     }
                     return null;
                   });
@@ -455,6 +476,7 @@ document.addEventListener('visibilitychange', handleVisibilityChange);
                     if (profilePath) {
                       const posterUrl = `https://image.tmdb.org/t/p/w500/${profilePath}`;
                       posterElement.src = posterUrl;
+                      document.getElementById('postercaption').textContent = castData.name;
                     }
                     return null;
                   });
