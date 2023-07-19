@@ -137,9 +137,7 @@
                     window.updatelinks();
                     document.getElementById("paused").style.display = "block";
                     document.title="Game Paused - ReelRoute";
-                    const containerstyle = document.getElementById('container');
-                    containerstyle.style.overflow: hidden;
-                    
+
                 } else {
                     document.getElementById("completed").style.display = "block";
                     document.title="Route Complete - ReelRoute";
@@ -164,8 +162,7 @@
               document.getElementById("paused").style.display = "block";
               document.title="Game Paused - ReelRoute";
               localStorage.setItem('paused',1);
-              const containerstyle = document.getElementById('container');
-              containerstyle.style.overflow: hidden;
+
           }
       }
     }
