@@ -456,8 +456,7 @@ document.addEventListener('visibilitychange', handleVisibilityChange);
                 document.getElementById("paused").style.display = "block";
                 localStorage.setItem('paused',1);
                 document.title = "Game Paused - ReelRoute";
-                const containerstyle = document.getElementById('container');
-                containerstyle.style.overflow: hidden;
+                document.getElementById("container").style.overflow = "hidden";
             }
         </script>
         <img draggable="false" class="logo" src="images/ReelRoute White.svg">
