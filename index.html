@@ -399,29 +399,18 @@ document.addEventListener('visibilitychange', handleVisibilityChange);
                         const personCredits = await fetchPersonDetails(id);
                         const containerElement = document.getElementById('container');
                         personCredits.forEach((credit) => {
-                        const newmovieid = credit.id;
-                        const apitype = {
-                            method: 'GET',
-                            headers: {
-                                accept: 'application/json',
-                                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMzU5ZWVlODE4NzMwYTBmMDExYTA3YjdlNmU3MzM3NSIsInN1YiI6IjY0ODc1OTIxYzAzNDhiMDBhZWQ1Nzc3YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qtny7zLA5JZuo2moI3UYBzi4grqAjwK5NMCyn85zO3U'
-                            }
-                        };
-                            
-                        fetch('https://api.themoviedb.org/3/movie/'+ newmovieid +'?language=en-US', apitype)
-                          .then(response => response.json())
-                          .then(response => {
-                              if (
-                                    credit.poster_path &&  // Must have a poster path
-                                    response.status === 'Released' &&  // Must have a release date
-                                    !credit.genre_ids.includes(99) &&  // Genre ID for "Documentary"
-                                    response.runtime && response.runtime > 60  // Duration is above 1 hour (60 minutes)
+                            var currentDate = new Date();
+                            var releaseDate = new Date(credit.release_date);
+                            if (
+                                credit.poster_path &&  // Must have a poster path
+                                currentDate >= releaseDate &&  // Must have a release date
+                                !credit.genre_ids.includes(99) &&  // Genre ID for "Documentary"
                                 ) {
-                                        const image = `https://image.tmdb.org/t/p/w200${credit.poster_path}`;
-                                        const name = credit.title;
-                                        const entityid = credit.id;
-                                        createImageWithText(containerElement, image, name, entityid);
-                                }
+                                const image = `https://image.tmdb.org/t/p/w200${credit.poster_path}`;
+                                const name = credit.title;
+                                const entityid = credit.id;
+                                createImageWithText(containerElement, image, name, entityid);
+                            }
                           })
                           .catch(err => console.error(err));
                         });
@@ -456,7 +445,6 @@ document.addEventListener('visibilitychange', handleVisibilityChange);
                 document.getElementById("paused").style.display = "block";
                 localStorage.setItem('paused',1);
                 document.title = "Game Paused - ReelRoute";
-                document.getElementById("main").style.overflow = "hidden";
             }
         </script>
         <img draggable="false" class="logo" src="images/ReelRoute White.svg">
