@@ -406,7 +406,7 @@ document.addEventListener('visibilitychange', handleVisibilityChange);
                             if (
                                 credit.poster_path &&  // Must have a poster path
                                 currentDate >= releaseDate &&  // Must have a release date
-                                !credit.genre_ids.includes(99) &&  // Genre ID for "Documentary"
+                                !credit.genre_ids.includes(99)  // Genre ID for "Documentary"
                                 ) {
                                 const image = `https://image.tmdb.org/t/p/w200${credit.poster_path}`;
                                 const name = credit.title;
