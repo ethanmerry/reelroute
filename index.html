@@ -401,6 +401,8 @@ document.addEventListener('visibilitychange', handleVisibilityChange);
                         personCredits.forEach((credit) => {
                             var currentDate = new Date();
                             var releaseDate = new Date(credit.release_date);
+                            console.log(currentDate);
+                            console.log(releaseDate);
                             if (
                                 credit.poster_path &&  // Must have a poster path
                                 currentDate >= releaseDate &&  // Must have a release date
