@@ -137,6 +137,9 @@
                     window.updatelinks();
                     document.getElementById("paused").style.display = "block";
                     document.title="Game Paused - ReelRoute";
+                    const containerstyle = document.getElementById('container');
+                    containerstyle.style.overflow: hidden;
+                    
                 } else {
                     document.getElementById("completed").style.display = "block";
                     document.title="Route Complete - ReelRoute";
@@ -161,6 +164,8 @@
               document.getElementById("paused").style.display = "block";
               document.title="Game Paused - ReelRoute";
               localStorage.setItem('paused',1);
+              const containerstyle = document.getElementById('container');
+              containerstyle.style.overflow: hidden;
           }
       }
     }
@@ -454,6 +459,8 @@ document.addEventListener('visibilitychange', handleVisibilityChange);
                 document.getElementById("paused").style.display = "block";
                 localStorage.setItem('paused',1);
                 document.title = "Game Paused - ReelRoute";
+                const containerstyle = document.getElementById('container');
+                containerstyle.style.overflow: hidden;
             }
         </script>
         <img draggable="false" class="logo" src="images/ReelRoute White.svg">
