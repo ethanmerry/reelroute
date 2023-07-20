@@ -505,17 +505,21 @@ document.addEventListener('visibilitychange', handleVisibilityChange);
                                 .then(data => {
                                     localStorage.setItem('id', data.id);
                                     localStorage.setItem('type','movie');
+                                    console.log("Set Items");
     
                                 })
                                 .catch(error => {
                                     console.log('Error:', error);
                                 });
                             window.updateposter();
+                            console.log("Shouldve updated poster")
                             const list = document.getElementById("container");
                             while (list.hasChildNodes()) {
                               list.removeChild(list.firstChild);
-                            }                     
+                            }     
+                            console.log("removed");
                             window.updatecredits()
+                            console.log("updated credits");
                         }
                     };
                 </script>
