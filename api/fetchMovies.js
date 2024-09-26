@@ -1,7 +1,9 @@
-// api/fetchMovies.js
 const fetch = require('node-fetch');
-const { writeFile } = require('fs/promises');
-const path = require('path');
+const { MongoClient } = require('mongodb');
+
+// Create a MongoDB client instance
+const uri = process.env.MONGODB_URI;
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 module.exports = async function handler(req, res) {
   const apiKey = process.env.TMDB_API_KEY;
@@ -16,22 +18,24 @@ module.exports = async function handler(req, res) {
     const startingMovie = movies[0];
     const endMovie = movies[1];
 
-    // Define paths for saving JSON files
-    const startingMoviePath = path.join('/tmp', 'startingMovie.json');
-    const endMoviePath = path.join('/tmp', 'endMovie.json');
+    // Connect to MongoDB
+    await client.connect();
+    const database = client.db('myDatabase');  // Replace with your database name
+    const collection = database.collection('movies');
 
-    // Save the movies as JSON files
-    await writeFile(startingMoviePath, JSON.stringify(startingMovie, null, 2));
-    await writeFile(endMoviePath, JSON.stringify(endMovie, null, 2));
-
-    // Respond with success message and file paths
-    res.status(200).json({
-      message: 'Movies fetched and saved successfully!',
-      startingMoviePath,
-      endMoviePath
+    // Clear previous day's data (if exists) and insert new data
+    await collection.deleteMany({}); // Delete all existing documents
+    await collection.insertOne({
+      date: new Date(),
+      startingMovie,
+      endMovie,
     });
+
+    res.status(200).json({ message: 'Movies saved to MongoDB successfully!' });
   } catch (error) {
-    console.error('Error fetching movies:', error);
-    res.status(500).json({ message: 'Error fetching movies' });
+    console.error('Error fetching movies or saving to MongoDB:', error);
+    res.status(500).json({ message: 'Error fetching movies or saving to MongoDB' });
+  } finally {
+    await client.close(); // Ensure the MongoDB client is closed
   }
 };
