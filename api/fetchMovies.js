@@ -1,9 +1,9 @@
 // api/fetchMovies.js
-import fetch from 'node-fetch';
-import { writeFile } from 'fs/promises';
-import path from 'path';
+const fetch = require('node-fetch');
+const { writeFile } = require('fs/promises');
+const path = require('path');
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   const apiKey = process.env.TMDB_API_KEY;
 
   try {
@@ -34,4 +34,4 @@ export default async function handler(req, res) {
     console.error('Error fetching movies:', error);
     res.status(500).json({ message: 'Error fetching movies' });
   }
-}
+};
