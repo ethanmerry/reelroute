@@ -1,6 +1,6 @@
 {
   "crons": [{
     "path": "/api/fetchMovies",
-    "schedule": "0 0 * * *"
+    "schedule": "* * * * *"
   }]
 }
