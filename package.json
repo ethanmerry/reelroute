@@ -4,6 +4,7 @@
   "description": "A Vercel serverless function to fetch movies from TMDB API",
   "main": "index.js",
   "dependencies": {
+    "mongodb": "^5.0.0",
     "node-fetch": "^2.6.1"
   },
   "scripts": {
