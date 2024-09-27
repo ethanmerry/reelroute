@@ -1,6 +1,13 @@
 {
-  "crons": [{
-    "path": "/api/fetchMovies",
-    "schedule": "0 0 * * *"
-  }]
+  "crons": [
+    {
+      "path": "/api/fetchMovies",
+      "schedule": "0 0 * * *"  // Runs every day at midnight
+    }
+  ],
+  "functions": {
+    "api/fetchMovies": {
+      "maxDuration": 60
+    }
+  }
 }
