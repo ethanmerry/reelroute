@@ -6,7 +6,7 @@
     }
   ],
   "functions": {
-    "api/fetchMovies": {
+    "/api/fetchMovies": {
       "maxDuration": 60
     }
   }
