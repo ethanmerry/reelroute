@@ -2,7 +2,7 @@
   "crons": [
     {
       "path": "/api/fetchMovies",
-      "schedule": "0 0 * * *"  // Runs every day at midnight
+      "schedule": "0 0 * * *"
     }
   ],
   "functions": {
