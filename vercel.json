@@ -1,6 +1,13 @@
 {
-  "crons": [{
-    "path": "/api/fetchMovies",
-    "schedule": "0 0 * * *"
-  }]
+  "crons": [
+    {
+      "path": "/api/fetchMovies",
+      "schedule": "0 0 * * *"
+    }
+  ],
+  "functions": {
+    "api/fetchMovies.js": {
+      "maxDuration": 60
+    }
+  }
 }
