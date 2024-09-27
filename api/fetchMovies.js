@@ -28,7 +28,7 @@ module.exports = async function handler(req, res) {
     const collection = database.collection('routeMovies');
 
     // Clear previous day's data and insert new data
-    await collection.deleteMany({});
+    //await collection.deleteMany({});
     await collection.insertOne({
       date: new Date(),
       startingMovie,
